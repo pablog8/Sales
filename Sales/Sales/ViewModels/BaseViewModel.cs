@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Sales.ViewModels
+﻿namespace Sales.ViewModels
 {
-   
+
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
