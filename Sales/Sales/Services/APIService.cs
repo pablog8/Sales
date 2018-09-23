@@ -5,10 +5,10 @@
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
+    using Sales.Common.Models;
+    using Sales.Helpers;
     using Newtonsoft.Json;
     using Plugin.Connectivity;
-    using Sales.Common.Models;
-    
 
     public class APIService
     {
@@ -21,7 +21,7 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Please turn on your internet settings",
+                    Message = Languages.TurnOnInternet,
                 };
             }
 
@@ -32,7 +32,7 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "No internet connection",
+                    Message = Languages.NoInternet,
                 };
             }
 

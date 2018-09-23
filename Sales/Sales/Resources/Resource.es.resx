@@ -121,15 +121,15 @@
     <value>Error</value>
   </data>
   <data name="Accept" xml:space="preserve">
-    <value>Accept</value>
+    <value>Aceptar</value>
   </data>
   <data name="TurnOnInternet" xml:space="preserve">
-    <value>Please turn on your internet settings.</value>
+    <value>Por favor conéctese a internet.</value>
   </data>
   <data name="NoInternet" xml:space="preserve">
-    <value>No internet connection</value>
+    <value>No hay conexión a Internet.</value>
   </data>
   <data name="Products" xml:space="preserve">
-    <value>Products</value>
+    <value>Productos</value>
   </data>
 </root>
