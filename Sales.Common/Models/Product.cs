@@ -34,6 +34,19 @@
         [DataType(DataType.Date)]
         public DateTime PublishOn { get; set; }
 
+        public string ImageFullPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.ImagePath))
+                {
+                    return null;
+                }
+                //devuelve la imagen (pagina de backend)
+                return $"http://salesbackend20180920053657.azurewebsites.net/{this.ImagePath.Substring(1)}";
+            }
+        }
+
         public override string ToString()
         {
             return this.Description;
