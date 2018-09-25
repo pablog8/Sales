@@ -40,7 +40,7 @@
             {
                 if (string.IsNullOrEmpty(this.ImagePath))
                 {
-                    return null;
+                    return "noproduct.png";
                 }
                 //devuelve la imagen (pagina de backend)
                 return $"http://salesbackend20180920053657.azurewebsites.net/{this.ImagePath.Substring(1)}";
