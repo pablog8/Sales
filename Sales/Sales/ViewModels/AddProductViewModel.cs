@@ -6,6 +6,7 @@
     using Xamarin.Forms;
     using Services;
     using Sales.Common.Models;
+    using System.Linq;
 
     public class AddProductViewModel : BaseViewModel
     {
@@ -120,6 +121,15 @@
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
+            
+            var newProduct = (Product)response.Result;
+
+            //adicionamos el producto a la colección
+            var viewModel = ProductsViewModel.GetInstance();
+            viewModel.Products.Add(newProduct);
+            // la ordenamos
+            //viewModel.Products = viewModel.Products.OrderBy(p => p.Description).ToList();
+
 
             //si lo hizo de manera exitosa hacemos el back
             this.isRunning = false;

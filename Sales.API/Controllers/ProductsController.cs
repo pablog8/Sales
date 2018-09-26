@@ -27,10 +27,11 @@
         }
 
         // GET: api/Products/5
+        //busca el producto en la base de datos
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> GetProduct(int id)
         {
-            Product product = await this.db.Products.FindAsync(id);
+            var product = await this.db.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -39,7 +40,9 @@
             return Ok(product);
         }
 
+
         // PUT: api/Products/5
+        //modificar
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProduct(int id, Product product)
         {
@@ -78,11 +81,17 @@
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> PostProduct(Product product)
         {
+            product.IsAvailable = true;
+            //añado hora de londres. Para que sea de españa le sumo 1
+            product.PublishOn = DateTime.Now.ToUniversalTime();
+
             if (!ModelState.IsValid)
             {
+
                 return BadRequest(ModelState);
             }
 
+            //adiciona el producto en la base de datos y lo devuelve como quedó en la bd
             this.db.Products.Add(product);
             await this.db.SaveChangesAsync();
 

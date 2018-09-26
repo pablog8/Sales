@@ -13,12 +13,13 @@
 
     public class ProductsViewModel : BaseViewModel
     {
+        #region Attributes
         private APIService apiService;
 
         private bool isRefreshing;
+        #endregion
 
-        
-
+        #region Properties
         private ObservableCollection<Product> products;
 
         public ObservableCollection<Product> Products
@@ -31,12 +32,34 @@
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
+        #endregion
+
+        #region Constructors
         public ProductsViewModel()
         {
+            //primera vez que llamamos a ProductsViewModel para guardarla 
+            instance = this;
+
             this.apiService = new APIService();
             this.LoadProducts();
         }
+        #endregion
 
+        //para llamar a una clase existente sin necesitad de volver a instanciarla =>SIGLETON
+        #region Singleton
+        private static ProductsViewModel instance;
+
+        public static ProductsViewModel GetInstance()
+        {
+            if (instance == null)
+            {
+                return new ProductsViewModel();
+            }
+            return instance;
+        }
+        #endregion
+
+        #region Methods
         private async void LoadProducts()
         {
             //carga los productos
@@ -71,12 +94,17 @@
             this.Products = new ObservableCollection<Product>(list);
             this.IsRefreshing = false;
         }
+        #endregion
+
+        #region Commands
         public ICommand RefreshCommand
         {
             get
             {
                 return new RelayCommand(LoadProducts);
             }
-        } 
+        }
+        #endregion
+
     }
 }
