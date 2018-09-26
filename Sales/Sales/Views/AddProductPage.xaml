@@ -11,40 +11,85 @@
             
         <StackLayout          
             Padding="5">
-            <Label
-                Text="{i18n:Translate Description}">
+                <Image
+                Source="noproduct">
 
-            </Label>
-            <Entry
+                </Image>
+                <Label 
+                        FontSize="Small"
+                        HorizontalOptions="Center"
+                        Text="{i18n:Translate ChangeImage}">
+                     </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{i18n:Translate Description}"
+                        VerticalOptions="Center">
+
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Description}"
                 Placeholder="{i18n:Translate DescriptionPlaceholder}">
 
-            </Entry>
-            <Label
-                Text="{i18n:Translate Price}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                Text="{i18n:Translate Price}"
+                        VerticalOptions="Center">
 
-            </Label>
-            <Entry
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
                 Keyboard="Numeric"
+                        Text="{Binding Price}"
                 Placeholder="{i18n:Translate PricePlaceholder}">
 
-            </Entry>
-            <Label
-                Text="{i18n:Translate Remarks}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                Text="{i18n:Translate Remarks}"
+                        VerticalOptions="Center">
 
-            </Label>
-            <!--Editor es como un entry pero te permite ingresar mas lineas-->
-            <Editor
+                    </Label>
+                    <!--Editor es como un entry pero te permite ingresar mas lineas-->
+                    <Editor
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="{Binding Remarks}"
                 VerticalOptions="FillAndExpand">
-                
-            </Editor>
-            <ActivityIndicator>
+
+                    </Editor>
+
+
+                </Grid>
+            
+            <ActivityIndicator
+                IsRunning="{Binding IsRunning}"
+                VerticalOptions="CenterAndExpand">
                 
             </ActivityIndicator>
             <Button
                 
                 Text="{i18n:Translate Save}"
                 BorderRadius="23"
+                Command="{Binding SaveCommand}"
                 HeightRequest="46"
+                IsEnabled="{Binding IsEnabled}"
                 BackgroundColor="Navy"
                 TextColor="White">
 
