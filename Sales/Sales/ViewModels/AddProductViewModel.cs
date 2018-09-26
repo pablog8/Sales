@@ -1,14 +1,17 @@
-﻿using GalaSoft.MvvmLight.Command;
-using Sales.Helpers;
-using System;
-using System.Windows.Input;
-using Xamarin.Forms;
-
-namespace Sales.ViewModels
+﻿namespace Sales.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
+    using Sales.Helpers;
+    using System.Windows.Input;
+    using Xamarin.Forms;
+    using Services;
+    using Sales.Common.Models;
+
     public class AddProductViewModel : BaseViewModel
     {
         #region Attributes
+
+        private APIService apiService;
         private bool isRunning;
         private bool isEnabled;
         #endregion
@@ -36,6 +39,7 @@ namespace Sales.ViewModels
         #region Constructors
         public AddProductViewModel()
         {
+            this.apiService = new APIService();
             this.isEnabled = true;
         }
         #endregion
@@ -76,6 +80,53 @@ namespace Sales.ViewModels
                     Languages.Accept);
                 return;
             }
+            this.isRunning = true;
+            this.isEnabled = false;
+
+            //chekea la conexion
+            var connection = await this.apiService.CheckConnection();
+            //si la conexion a internet no ha sido exitosa
+            if (!connection.IsSuccess)
+            {
+                this.isRunning = false;
+                this.isEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+
+            }
+
+            //metemos lo que mandemos al post como un producto
+            var product = new Product
+            {
+                Description = this.Description,
+                Price = price,
+                Remarks = this.Remarks
+            };
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+
+            var controller = Application.Current.Resources["UrlProductsController"].ToString();
+
+            //invocamos el metodo post del apiservice
+            var response = await this.apiService.Post(url, prefix, controller, product);
+
+            //preguntamos si lo grabó de manera exitosa
+            if (!response.IsSuccess)
+            {
+                this.isRunning = false;
+                this.isEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+
+            //si lo hizo de manera exitosa hacemos el back
+            this.isRunning = false;
+            this.isEnabled = true;
+            //Desapilamos
+            await Application.Current.MainPage.Navigation.PopAsync();
+
         }
         #endregion
     }
