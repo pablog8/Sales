@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -34,6 +35,14 @@
         [DataType(DataType.Date)]
         public DateTime PublishOn { get; set; }
 
+
+        //para tener atributos que no esten en la base de datos pero si en el modelo
+        [NotMapped]
+        public byte[] ImageArray { get; set; }
+
+
+
+
         public string ImageFullPath
         {
             get
@@ -43,7 +52,7 @@
                     return "noproduct.png";
                 }
                 //devuelve la imagen (pagina de backend)
-                return $"http://salesbackend20180920053657.azurewebsites.net/{this.ImagePath.Substring(1)}";
+                return $"http://salesapiservices2018.azurewebsites.net/{this.ImagePath.Substring(1)}";
             }
         }
 

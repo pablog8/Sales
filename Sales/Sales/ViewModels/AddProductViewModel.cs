@@ -167,12 +167,21 @@
 
             }
 
+            //para saber si se cogió o no foto
+            byte[] imageArray = null;
+            if (this.file != null)
+            {
+                imageArray = FilesHelper.ReadFully(this.file.GetStream());
+            }
+
+
             //metemos lo que mandemos al post como un producto
             var product = new Product
             {
                 Description = this.Description,
                 Price = price,
-                Remarks = this.Remarks
+                Remarks = this.Remarks,
+                ImageArray = imageArray,
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
