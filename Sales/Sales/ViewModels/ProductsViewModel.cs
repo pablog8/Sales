@@ -10,6 +10,7 @@
     using Sales.Helpers;
     using Services;
     using Xamarin.Forms;
+    using System.Linq;
 
     public class ProductsViewModel : BaseViewModel
     {
@@ -17,12 +18,14 @@
         private APIService apiService;
 
         private bool isRefreshing;
+
+        private ObservableCollection<ProductItemViewModel> products;
         #endregion
 
         #region Properties
-        private ObservableCollection<Product> products;
 
-        public ObservableCollection<Product> Products
+
+        public ObservableCollection<ProductItemViewModel> Products
         {
             get { return this.products; }
             set { this.SetValue(ref this.products, value); }
@@ -91,7 +94,22 @@
                 return;
             }
             var list = (List<Product>)response.Result;
-            this.Products = new ObservableCollection<Product>(list);
+
+            //Convierto los Products a ProductItemViewModel
+
+            var myList = list.Select(p => new ProductItemViewModel {
+                Description = p.Description,
+                ImageArray = p.ImageArray,
+                ImagePath = p.ImagePath,
+                IsAvailable = p.IsAvailable,
+                Price = p.Price,
+                PublishOn = p.PublishOn,
+                ProductId = p.ProductId,
+                Remarks = p.Remarks,
+
+            });
+
+            this.Products = new ObservableCollection<ProductItemViewModel>(myList);
             this.IsRefreshing = false;
         }
         #endregion

@@ -206,7 +206,18 @@
 
             //adicionamos el producto a la colección
             var viewModel = ProductsViewModel.GetInstance();
-            viewModel.Products.Add(newProduct);
+            viewModel.Products.Add(new ProductItemViewModel
+            {
+                Description = newProduct.Description,
+                ImageArray = newProduct.ImageArray,
+                ImagePath = newProduct.ImagePath,
+                IsAvailable = newProduct.IsAvailable,
+                Price = newProduct.Price,
+                PublishOn = newProduct.PublishOn,
+                ProductId = newProduct.ProductId,
+                Remarks = newProduct.Remarks,
+
+            });
             // la ordenamos
             //viewModel.Products = viewModel.Products.OrderBy(p => p.Description).ToList();
 
