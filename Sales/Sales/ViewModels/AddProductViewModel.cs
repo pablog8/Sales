@@ -7,11 +7,16 @@
     using Services;
     using Sales.Common.Models;
     using System.Linq;
+    using Plugin.Media.Abstractions;
+    using System;
+    using Plugin.Media;
 
     public class AddProductViewModel : BaseViewModel
     {
         #region Attributes
 
+        private MediaFile file;
+        private ImageSource imageSource;
         private APIService apiService;
         private bool isRunning;
         private bool isEnabled;
@@ -35,17 +40,83 @@
             get { return this.isEnabled; }
             set { this.SetValue(ref this.isEnabled, value); }
         }
+        public ImageSource ImageSource
+        {
+            get { return this.imageSource; }
+            set { this.SetValue(ref this.imageSource, value); }
+        }
         #endregion
 
         #region Constructors
         public AddProductViewModel()
         {
             this.apiService = new APIService();
-            this.isEnabled = true;
+            this.IsEnabled = true;
+            this.ImageSource = "noproduct";
         }
         #endregion
 
         #region Commands
+
+        public ICommand ChangeImageCommand
+        {
+            get
+            {
+                return new RelayCommand(ChangeImage);
+            }
+        }
+
+        private async void ChangeImage()
+        {
+            //inicializamos librería de fotos
+            await CrossMedia.Current.Initialize();
+
+            //preguntamos de donde se quiere obtener la imagen.
+            var source = await Application.Current.MainPage.DisplayActionSheet(
+                Languages.ImageSource,
+                Languages.Cancel,
+                null,
+                Languages.FromGallery,
+                Languages.NewPicture);
+
+            //cuando pulsamos cancelar
+            if (source == Languages.Cancel)
+            {
+                this.file = null;
+                return;
+            }
+
+            //si tomamos la foto con la cámara
+            if (source == Languages.NewPicture)
+            {
+                this.file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+
+            //si el usuario quiere la foto de la galería
+            else
+            {
+                this.file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            //si el usuario si ha seleccionado una imagen ( de galería o de la cámara)
+            //Capturamos la imagen
+            if (this.file != null)
+            {
+                this.ImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    return stream;
+                });
+            }
+        }
+
         public ICommand SaveCommand
         {
             get
@@ -81,16 +152,16 @@
                     Languages.Accept);
                 return;
             }
-            this.isRunning = true;
-            this.isEnabled = false;
+            this.IsRunning = true;
+            this.IsEnabled = false;
 
             //chekea la conexion
             var connection = await this.apiService.CheckConnection();
             //si la conexion a internet no ha sido exitosa
             if (!connection.IsSuccess)
             {
-                this.isRunning = false;
-                this.isEnabled = true;
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
 
@@ -116,8 +187,8 @@
             //preguntamos si lo grabó de manera exitosa
             if (!response.IsSuccess)
             {
-                this.isRunning = false;
-                this.isEnabled = true;
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
@@ -132,8 +203,8 @@
 
 
             //si lo hizo de manera exitosa hacemos el back
-            this.isRunning = false;
-            this.isEnabled = true;
+            this.IsRunning = false;
+            this.IsEnabled = true;
             //Desapilamos
             await Application.Current.MainPage.Navigation.PopAsync();
 
