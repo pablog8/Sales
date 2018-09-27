@@ -3,7 +3,9 @@
     using GalaSoft.MvvmLight.Command;
     using Sales.Common.Models;
     using Sales.Helpers;
+    using Sales.Views;
     using Services;
+    using System;
     using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -25,6 +27,24 @@
 
 
         #region Commands
+        public ICommand EditProductCommand
+        {
+            get
+            {
+                return new RelayCommand(EditProduct);
+            }
+        }
+
+        private async void EditProduct()
+        {
+
+            //Creamos una instancia y ligarlo a la viewmodel
+            MainViewModel.GetInstance().EditProduct = new EditProductViewModel(this);
+
+            //tiene que apilar otra pagina
+            await Application.Current.MainPage.Navigation.PushAsync(new EditProductPage());
+            
+        }
 
         public ICommand DeleteProductCommand
         {

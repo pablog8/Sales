@@ -23,7 +23,8 @@
         #endregion
 
         #region Properties
-
+        public List<Product> MyProducts { get; set; }
+    
 
         public ObservableCollection<ProductItemViewModel> Products
         {
@@ -93,11 +94,19 @@
 
                 return;
             }
-            var list = (List<Product>)response.Result;
+            this.MyProducts = (List<Product>)response.Result;
+            this.RefreshList();
 
-            //Convierto los Products a ProductItemViewModel
+           
+            this.IsRefreshing = false;
+        }
 
-            var myList = list.Select(p => new ProductItemViewModel {
+        public void RefreshList()
+        {
+            //Convierto la lista de los Products a ProductItemViewModel
+
+            var myListProductItemViewModel = MyProducts.Select(p => new ProductItemViewModel
+            {
                 Description = p.Description,
                 ImageArray = p.ImageArray,
                 ImagePath = p.ImagePath,
@@ -109,8 +118,8 @@
 
             });
 
-            this.Products = new ObservableCollection<ProductItemViewModel>(myList);
-            this.IsRefreshing = false;
+            this.Products = new ObservableCollection<ProductItemViewModel>(
+                myListProductItemViewModel.OrderBy(p => p.Description));
         }
         #endregion
 

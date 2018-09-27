@@ -1,20 +1,19 @@
 ﻿namespace Sales.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
+    using Plugin.Media;
+    using Plugin.Media.Abstractions;
+    using Sales.Common.Models;
     using Sales.Helpers;
+    using Sales.Services;
+    using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
-    using Services;
-    using Sales.Common.Models;
-    using System.Linq;
-    using Plugin.Media.Abstractions;
-    using System;
-    using Plugin.Media;
 
-    public class AddProductViewModel : BaseViewModel
+    public class EditProductViewModel : BaseViewModel
     {
-        #region Attributes
-
+        #region Atributes
+        private Product product;
         private MediaFile file;
         private ImageSource imageSource;
         private APIService apiService;
@@ -23,11 +22,11 @@
         #endregion
 
         #region Properties
-        public string Description { get; set; }
-
-        public string Price { get; set; }
-
-        public string Remarks { get; set; }
+        public Product Product
+        {
+            get { return this.product; }
+            set { this.SetValue(ref this.product, value); }
+        }
 
         public bool IsRunning
         {
@@ -46,13 +45,13 @@
             set { this.SetValue(ref this.imageSource, value); }
         }
         #endregion
-
         #region Constructors
-        public AddProductViewModel()
+        public EditProductViewModel(Product product)
         {
+            this.product = product;
             this.apiService = new APIService();
             this.IsEnabled = true;
-            this.ImageSource = "noproduct";
+            this.ImageSource = product.ImageFullPath;
         }
         #endregion
 
@@ -127,24 +126,17 @@
 
         private async void Save()
         {
-            if (string.IsNullOrEmpty(this.Description))
+            if (string.IsNullOrEmpty(this.Product.Description))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error, 
+                    Languages.Error,
                     Languages.DescriptionError,
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.Price))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.PriceError,
-                    Languages.Accept);
-                return;
-            }
-            var price = decimal.Parse(this.Price);
-            if(price < 0)
+           
+            
+            if (this.Product.Price < 0)
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -172,17 +164,9 @@
             if (this.file != null)
             {
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
+                this.Product.ImageArray = imageArray;
             }
 
-
-            //metemos lo que mandemos al post como un producto
-            var product = new Product
-            {
-                Description = this.Description,
-                Price = price,
-                Remarks = this.Remarks,
-                ImageArray = imageArray,
-            };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
 
@@ -191,7 +175,7 @@
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
 
             //invocamos el metodo post del apiservice
-            var response = await this.apiService.Post(url, prefix, controller, product);
+            var response = await this.apiService.Put(url, prefix, controller, this.Product, this.Product.ProductId);
 
             //preguntamos si lo grabó de manera exitosa
             if (!response.IsSuccess)
@@ -201,11 +185,21 @@
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
-            
+
             var newProduct = (Product)response.Result;
 
             //adicionamos el producto a la colección
             var productsViewModel = ProductsViewModel.GetInstance();
+
+            //buscamos el producto lo eliminamos y lo volvemos a crear
+            var oldProduct = productsViewModel.MyProducts.Where(p => p.ProductId == this.Product.ProductId).FirstOrDefault();
+
+            if(oldProduct != null)
+            {
+                productsViewModel.MyProducts.Remove(oldProduct);
+            }
+
+
             productsViewModel.MyProducts.Add(newProduct);
             productsViewModel.RefreshList();
             // la ordenamos
