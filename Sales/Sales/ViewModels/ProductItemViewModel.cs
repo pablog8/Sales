@@ -98,13 +98,13 @@
             var productsViewModel = ProductsViewModel.GetInstance();
 
             //buscamos el producto en la lista y lo eliminamos
-            var deletedProduct = productsViewModel.Products.Where(p => p.ProductId == this.ProductId).FirstOrDefault();
+            var deletedProduct = productsViewModel.MyProducts.Where(p => p.ProductId == this.ProductId).FirstOrDefault();
 
             //si encontramos el producto
             if (deletedProduct != null) {
-                productsViewModel.Products.Remove(deletedProduct);
+                productsViewModel.MyProducts.Remove(deletedProduct);
             }
-
+            productsViewModel.RefreshList();
         }
 
         #endregion

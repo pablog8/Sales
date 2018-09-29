@@ -6,6 +6,7 @@
     using Sales.Common.Models;
     using Sales.Helpers;
     using Sales.Services;
+    using System;
     using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -56,6 +57,80 @@
         #endregion
 
         #region Commands
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return new RelayCommand(Delete);
+            }
+
+        }
+
+        private async void Delete()
+        {
+            var answer = await Application.Current.MainPage.DisplayAlert(
+                Languages.Confirm,
+                Languages.DeleteConfirmation,
+                Languages.Yes,
+                Languages.No);
+            if (!answer)
+            {
+                return;
+            }
+
+            this.IsRunning = true;
+            this.IsEnabled = false;
+            //eliminamos el producto
+            //comprobamos si hay conexión
+            var connection = await this.apiService.CheckConnection();
+            //si la conexion a internet no ha sido exitosa
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+
+            }
+
+            //vamos a la api
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+
+            var controller = Application.Current.Resources["UrlProductsController"].ToString();
+
+            var response = await this.apiService.Delete(url, prefix, controller, this.Product.ProductId);
+
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+
+                return;
+            }
+
+            //hay que actualizar la lista, llamamos a  SINGLETON
+            var productsViewModel = ProductsViewModel.GetInstance();
+
+            //buscamos el producto en la lista y lo eliminamos
+            var deletedProduct = productsViewModel.MyProducts.Where(p => p.ProductId == this.Product.ProductId).FirstOrDefault();
+
+            //si encontramos el producto
+            if (deletedProduct != null)
+            {
+                productsViewModel.MyProducts.Remove(deletedProduct);
+            }
+            productsViewModel.RefreshList();
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
+
+            await Application.Current.MainPage.Navigation.PopAsync();
+
+
+        }
 
         public ICommand ChangeImageCommand
         {
