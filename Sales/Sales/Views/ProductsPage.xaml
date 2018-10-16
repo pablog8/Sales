@@ -15,6 +15,13 @@
             
             BindingContext="{Binding Products}"
             Padding="5">
+            <SearchBar
+                HeightRequest="40"
+                Placeholder="{i18n:Translate Search}"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding Filter}">
+                
+            </SearchBar>
             <ListView
                 
                 HasUnevenRows="True"

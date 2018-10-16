@@ -7,14 +7,16 @@ using Xamarin.Forms;
 
 namespace Sales
 {
+    using Sales.ViewModels;
     using Views;
 	public partial class App : Application
 	{
 		public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new NavigationPage(new ProductsPage());
+            MainViewModel.GetInstance().Login = new LoginViewModel();
+            MainPage = new LoginPage();
+			//MainPage = new NavigationPage(new ProductsPage());
 		}
 
 		protected override void OnStart ()

@@ -16,7 +16,7 @@
     using Sales.Common.Models;
     using Sales.Domain.Models;
 
-
+    [Authorize]
     public class ProductsController : ApiController
     {
         //crea conexion a la base de datos

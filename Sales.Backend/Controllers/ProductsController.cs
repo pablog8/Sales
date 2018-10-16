@@ -13,6 +13,8 @@
     using Sales.Common.Models;
     using Sales.Backend.Helpers;
 
+    //para que solo puedan acceder los usuarios registrados pongo Authorize
+    [Authorize]
     public class ProductsController : Controller
     {
         //la base de datos es db
