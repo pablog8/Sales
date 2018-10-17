@@ -1,14 +1,17 @@
-﻿using GalaSoft.MvvmLight.Command;
-using Sales.Helpers;
-using System;
-using System.Windows.Input;
-using Xamarin.Forms;
-
-namespace Sales.ViewModels
+﻿namespace Sales.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
+    using Sales.Helpers;
+    using Sales.Services;
+    using Sales.Views;
+    using System.Windows.Input;
+    using Xamarin.Forms;
+
+
     public class LoginViewModel : BaseViewModel
     {
         #region Attributes
+        private APIService apiService;
 
         private bool isRunning;
         private bool isEnabled;
@@ -38,6 +41,7 @@ namespace Sales.ViewModels
         #region Constructors
         public LoginViewModel()
         {
+            this.apiService = new APIService();
             this.IsEnabled = true;
             this.IsRemembered = true;
         }
@@ -74,6 +78,48 @@ namespace Sales.ViewModels
                     Languages.Accept);
                 return;
             }
+
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
+            var connection = await this.apiService.CheckConnection();
+            //si la conexion a internet no ha sido exitosa
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+
+            }
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+
+            //consumimos el token
+            var token = await this.apiService.GetToken(url, this.Email, this.Password);
+
+            //comprobamos si el token es valido o no
+
+            if(token == null || string.IsNullOrEmpty(token.AccessToken))
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, Languages.SomethingWrong, Languages.Accept);
+                return;
+            }
+
+            // si llegamos aquí ya podemos consumir los productos con el token
+
+            Settings.TokenType = token.TokenType;
+            Settings.AccessToken = token.AccessToken;
+            Settings.IsRemembered = this.IsRemembered;
+
+            //instanciamos la viewmodel de la page que instanciemos
+            MainViewModel.GetInstance().Products = new ProductsViewModel();
+            Application.Current.MainPage = new ProductsPage();
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
         }
         #endregion
 
