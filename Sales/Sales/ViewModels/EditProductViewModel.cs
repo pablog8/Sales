@@ -100,7 +100,7 @@
 
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
 
-            var response = await this.apiService.Delete(url, prefix, controller, this.Product.ProductId);
+            var response = await this.apiService.Delete(url, prefix, controller, this.Product.ProductId, Settings.TokenType, Settings.AccessToken);
 
             if (!response.IsSuccess)
             {
@@ -127,7 +127,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await App.Navigator.PopAsync();
 
 
         }
@@ -250,7 +250,7 @@
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
 
             //invocamos el metodo post del apiservice
-            var response = await this.apiService.Put(url, prefix, controller, this.Product, this.Product.ProductId);
+            var response = await this.apiService.Put(url, prefix, controller, this.Product, this.Product.ProductId, Settings.TokenType, Settings.AccessToken);
 
             //preguntamos si lo grabó de manera exitosa
             if (!response.IsSuccess)
@@ -285,7 +285,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
             //Desapilamos
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await App.Navigator.PopAsync();
 
         }
         #endregion

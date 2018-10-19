@@ -42,7 +42,7 @@
             MainViewModel.GetInstance().EditProduct = new EditProductViewModel(this);
 
             //tiene que apilar otra pagina
-            await Application.Current.MainPage.Navigation.PushAsync(new EditProductPage());
+            await App.Navigator.PushAsync(new EditProductPage());
             
         }
 
@@ -84,7 +84,7 @@
 
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
 
-            var response = await this.apiService.Delete(url, prefix, controller, this.ProductId);
+            var response = await this.apiService.Delete(url, prefix, controller, this.ProductId,Settings.TokenType, Settings.AccessToken);
 
             if (!response.IsSuccess)
             {

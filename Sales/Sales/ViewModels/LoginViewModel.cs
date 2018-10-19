@@ -116,7 +116,7 @@
 
             //instanciamos la viewmodel de la page que instanciemos
             MainViewModel.GetInstance().Products = new ProductsViewModel();
-            Application.Current.MainPage = new ProductsPage();
+            Application.Current.MainPage = new MasterPage();
 
             this.IsRunning = false;
             this.IsEnabled = true;

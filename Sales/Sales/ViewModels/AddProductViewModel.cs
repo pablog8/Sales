@@ -191,7 +191,7 @@
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
 
             //invocamos el metodo post del apiservice
-            var response = await this.apiService.Post(url, prefix, controller, product);
+            var response = await this.apiService.Post(url, prefix, controller, product, Settings.TokenType, Settings.AccessToken);
 
             //preguntamos si lo grabó de manera exitosa
             if (!response.IsSuccess)
@@ -216,7 +216,7 @@
             this.IsRunning = false;
             this.IsEnabled = true;
             //Desapilamos
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await App.Navigator.PopAsync();
 
         }
         #endregion
