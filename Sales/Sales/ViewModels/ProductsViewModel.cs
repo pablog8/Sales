@@ -11,6 +11,7 @@
     using Services;
     using Xamarin.Forms;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class ProductsViewModel : BaseViewModel
     {
@@ -18,6 +19,8 @@
         private string filter;
 
         private APIService apiService;
+
+        private DataService dataService;
 
         private bool isRefreshing;
 
@@ -59,6 +62,7 @@
             instance = this;
 
             this.apiService = new APIService();
+            this.dataService = new DataService();
             this.LoadProducts();
         }
         #endregion
@@ -86,14 +90,50 @@
 
             var connection = await this.apiService.CheckConnection();
             //si la conexion a internet no ha sido exitosa
-            if (!connection.IsSuccess)
+            if (connection.IsSuccess)
             {
-                this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
-                return;
-
+                //comprobamos si cargamos los datos del servidor cuando tenemos conexion a internet, si no la cargamos de la base de datos local
+                var answer = await this.LoadProductsFromAPI();
+                if (answer)
+                {
+                    this.SaveProductsToDB();
+                }
             }
 
+            else
+            {
+                await this.LoadProductsFromDB();
+                
+            }
+
+                if(this.MyProducts == null || this.MyProducts.Count == 0)
+                {
+                    this.IsRefreshing = false;
+                    await Application.Current.MainPage.DisplayAlert(Languages.Error, Languages.NoProductsMessage, Languages.Accept);
+                    return;
+                }
+
+            
+
+            this.RefreshList();
+
+           
+            this.IsRefreshing = false;
+        }
+
+        private async Task LoadProductsFromDB()
+        {
+            this.MyProducts = await this.dataService.GetAllProducts();
+        }
+
+        private async Task SaveProductsToDB()
+        {
+            await this.dataService.DeleteAllProducts();
+            this.dataService.Insert(this.MyProducts);
+        }
+
+        private async Task<bool> LoadProductsFromAPI()
+        {
             var url = Application.Current.Resources["UrlAPI"].ToString();
 
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
@@ -104,16 +144,15 @@
 
             if (!response.IsSuccess)
             {
+                /*
                 this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
-
-                return;
+                */
+                return false;
             }
             this.MyProducts = (List<Product>)response.Result;
-            this.RefreshList();
 
-           
-            this.IsRefreshing = false;
+            return true;
         }
 
         public void RefreshList()
