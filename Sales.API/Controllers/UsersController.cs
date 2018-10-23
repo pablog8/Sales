@@ -31,7 +31,11 @@
             }
 
             var answer = UsersHelper.CreateUserASP(userRequest);
-            return Ok(answer);
+            if (answer.IsSuccess)
+            {
+                return Ok(answer);
+            }
+            return BadRequest(answer.Message);
         }
 
         [HttpPost]
