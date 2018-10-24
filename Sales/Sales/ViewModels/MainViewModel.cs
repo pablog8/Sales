@@ -42,6 +42,21 @@
             }
         }
 
+        public string UserImageFullPath
+        {
+            get
+            {
+                //Si el usuario no es nulo y los datos claims son mayores que tres
+                if (this.UserASP != null && this.UserASP.Claims != null && this.UserASP.Claims.Count > 3)
+                {
+                    //devolvemos claim 3 que es la imagen
+                    return $"http://salesapiservices2018.azurewebsites.net{this.UserASP.Claims[3].ClaimValue.Substring(1)}";
+                }
+
+                return null;
+            }
+        }
+
 
         #endregion
 

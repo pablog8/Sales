@@ -10,8 +10,9 @@
     using Android.OS;
     using Plugin.Permissions;
     using Plugin.CurrentActivity;
+    using ImageCircle.Forms.Plugin.Droid;
 
-    [Activity(Label = "Sales", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Sales", Icon = "@drawable/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -22,6 +23,7 @@
             base.OnCreate(bundle);
             CrossCurrentActivity.Current.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            ImageCircleRenderer.Init();
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(
