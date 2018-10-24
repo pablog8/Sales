@@ -46,16 +46,23 @@
         {
             get
             {
-                //Si el usuario no es nulo y los datos claims son mayores que tres
-                if (this.UserASP != null && this.UserASP.Claims != null && this.UserASP.Claims.Count > 3)
+                foreach (var claim in this.UserASP.Claims)
                 {
-                    //devolvemos claim 3 que es la imagen
-                    return $"http://salesapiservices2018.azurewebsites.net{this.UserASP.Claims[3].ClaimValue.Substring(1)}";
+                    if (claim.ClaimType == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/uri")
+                    {
+                        if (claim.ClaimValue.StartsWith("~"))
+                        {
+                            return $"https://salesapiservices.azurewebsites.net{claim.ClaimValue.Substring(1)}";
+                        }
+
+                        return claim.ClaimValue;
+                    }
                 }
 
                 return null;
             }
         }
+
 
 
         #endregion
