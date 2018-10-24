@@ -2192,26 +2192,26 @@ namespace Sales.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f02011a
-			public const int avd_hide_password_1 = 2130837786;
-			
 			// aapt resource value: 0x7f02011b
-			public const int avd_hide_password_2 = 2130837787;
+			public const int avd_hide_password_1 = 2130837787;
 			
 			// aapt resource value: 0x7f02011c
-			public const int avd_hide_password_3 = 2130837788;
+			public const int avd_hide_password_2 = 2130837788;
+			
+			// aapt resource value: 0x7f02011d
+			public const int avd_hide_password_3 = 2130837789;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f02011d
-			public const int avd_show_password_1 = 2130837789;
-			
 			// aapt resource value: 0x7f02011e
-			public const int avd_show_password_2 = 2130837790;
+			public const int avd_show_password_1 = 2130837790;
 			
 			// aapt resource value: 0x7f02011f
-			public const int avd_show_password_3 = 2130837791;
+			public const int avd_show_password_2 = 2130837791;
+			
+			// aapt resource value: 0x7f020120
+			public const int avd_show_password_3 = 2130837792;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -2783,11 +2783,11 @@ namespace Sales.Droid
 			// aapt resource value: 0x7f020112
 			public const int notification_icon_background = 2130837778;
 			
-			// aapt resource value: 0x7f020118
-			public const int notification_template_icon_bg = 2130837784;
-			
 			// aapt resource value: 0x7f020119
-			public const int notification_template_icon_low_bg = 2130837785;
+			public const int notification_template_icon_bg = 2130837785;
+			
+			// aapt resource value: 0x7f02011a
+			public const int notification_template_icon_low_bg = 2130837786;
 			
 			// aapt resource value: 0x7f020113
 			public const int notification_tile_bg = 2130837779;
@@ -2802,7 +2802,10 @@ namespace Sales.Droid
 			public const int sales = 2130837782;
 			
 			// aapt resource value: 0x7f020117
-			public const int twitter_logo = 2130837783;
+			public const int splash = 2130837783;
+			
+			// aapt resource value: 0x7f020118
+			public const int twitter_logo = 2130837784;
 			
 			static Drawable()
 			{
@@ -4759,6 +4762,9 @@ namespace Sales.Droid
 			
 			// aapt resource value: 0x7f0c0006
 			public const int Theme_MediaRouter_LightControlPanel = 2131492870;
+			
+			// aapt resource value: 0x7f0c018c
+			public const int Theme_Splash = 2131493260;
 			
 			// aapt resource value: 0x7f0c011f
 			public const int ThemeOverlay_AppCompat = 2131493151;
