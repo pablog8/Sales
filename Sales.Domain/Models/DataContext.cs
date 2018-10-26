@@ -14,6 +14,7 @@
         {
 
         }
+        public DbSet<Category> Categories { get; set; }
 
         //Mapea la clase Products a la base de datos
         public DbSet<Product> Products { get; set; }

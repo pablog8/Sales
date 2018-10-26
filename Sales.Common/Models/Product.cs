@@ -1,5 +1,6 @@
 ﻿namespace Sales.Common.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -35,6 +36,12 @@
         [DataType(DataType.Date)]
         public DateTime PublishOn { get; set; }
 
+        [Required]
+        [StringLength(128)]
+        public string UserId { get; set; }
+
+        [JsonIgnore]
+        public virtual Category Category { get; set; }
 
         //para tener atributos que no esten en la base de datos pero si en el modelo
         [NotMapped]
