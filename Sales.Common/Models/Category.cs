@@ -28,7 +28,7 @@
                     return "noproduct";
                 }
 
-                return $"https://salesbackend.azurewebsites.net{this.ImagePath.Substring(1)}";
+                return $"http://salesbackend20180920053657.azurewebsites.net{this.ImagePath.Substring(1)}";
             }
         }
     }

@@ -145,7 +145,7 @@
 
 
             //instanciamos la viewmodel de la page que instanciemos
-            MainViewModel.GetInstance().Products = new ProductsViewModel();
+            MainViewModel.GetInstance().Categories = new CategoriesViewModel();
             Application.Current.MainPage = new MasterPage();
 
             this.IsRunning = false;
