@@ -15,6 +15,8 @@
         [Key]
         public int ProductId { get; set; }
 
+        public int CategoryId { get; set; }
+
         //campo obligatorio
         [Required]
         [StringLength(50)]

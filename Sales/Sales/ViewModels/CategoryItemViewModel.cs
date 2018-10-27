@@ -23,7 +23,7 @@ namespace Sales.ViewModels
 
         private async void GotoCategory()
         {
-            MainViewModel.GetInstance().Products = new ProductsViewModel();// (this);
+            MainViewModel.GetInstance().Products = new ProductsViewModel(this);// (this);
             await App.Navigator.PushAsync(new ProductsPage());
         }
         #endregion

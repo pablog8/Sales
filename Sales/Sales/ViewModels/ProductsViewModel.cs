@@ -28,6 +28,11 @@
         #endregion
 
         #region Properties
+        public Category Category {
+            get;
+            set;
+        }
+
         public string Filter {
             get
             {
@@ -56,6 +61,7 @@
         #endregion
 
         #region Constructors
+        /*
         public ProductsViewModel()
         {
             //primera vez que llamamos a ProductsViewModel para guardarla 
@@ -64,25 +70,38 @@
             this.apiService = new APIService();
             this.dataService = new DataService();
             this.LoadProducts();
+        }*/
+
+        public ProductsViewModel(Category category)
+        {
+            instance = this;
+
+            this.apiService = new APIService();
+            this.Category = category;
+            this.dataService = new DataService();
+            this.LoadProducts();
+            
         }
         #endregion
 
         //para llamar a una clase existente sin necesitad de volver a instanciarla =>SIGLETON
         #region Singleton
         private static ProductsViewModel instance;
+        
 
         public static ProductsViewModel GetInstance()
-        {
+        {/*
             if (instance == null)
             {
                 return new ProductsViewModel();
-            }
+            }*/
             return instance;
         }
         #endregion
 
         #region Methods
         //va a la API y almacena una lista en MyProducts y ejecuta RefreshList
+        /*
         private async void LoadProducts()
         {
             //carga los productos
@@ -120,6 +139,28 @@
            
             this.IsRefreshing = false;
         }
+        */
+        private async void LoadProducts()
+        {
+            this.IsRefreshing = true;
+
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+            }
+
+            var answer = await this.LoadProductsFromAPI();
+            if (answer)
+            {
+                this.RefreshList();
+            }
+
+            this.IsRefreshing = false;
+        }
+
 
         private async Task LoadProductsFromDB()
         {
@@ -131,7 +172,7 @@
             await this.dataService.DeleteAllProducts();
             this.dataService.Insert(this.MyProducts);
         }
-
+        /*
         private async Task<bool> LoadProductsFromAPI()
         {
             var url = Application.Current.Resources["UrlAPI"].ToString();
@@ -147,13 +188,30 @@
                 /*
                 this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
-                */
+                
                 return false;
             }
+    
             this.MyProducts = (List<Product>)response.Result;
 
             return true;
         }
+    */
+        private async Task<bool> LoadProductsFromAPI()
+        {
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlProductsController"].ToString();
+            var response = await this.apiService.GetList<Product>(url, prefix, controller, this.Category.CategoryId, Settings.TokenType, Settings.AccessToken);
+            if (!response.IsSuccess)
+            {
+                return false;
+            }
+
+            this.MyProducts = (List<Product>)response.Result;
+            return true;
+        }
+
 
         public void RefreshList()
         {
