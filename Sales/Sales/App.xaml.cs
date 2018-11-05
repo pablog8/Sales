@@ -18,6 +18,9 @@ namespace Sales
 	{
         public static NavigationPage Navigator { get; internal set; }
 
+        public static MasterPage Master { get; internal set; }
+
+
         public App ()
 		{
 			InitializeComponent();
@@ -53,6 +56,7 @@ namespace Sales
                 return new Action(() => Current.MainPage = new NavigationPage(new LoginPage()));
             }
         }
+
 
         //cuando se hace el login
         public static async Task NavigateToProfile(TokenResponse token)

@@ -54,7 +54,7 @@
                     {
                         if (claim.ClaimValue.StartsWith("~"))
                         {
-                            return $"https://salesapiservices.azurewebsites.net{claim.ClaimValue.Substring(1)}";
+                            return $"http://salesapiservices2018.azurewebsites.net{claim.ClaimValue.Substring(1)}";
                         }
 
                         return claim.ClaimValue;
@@ -80,6 +80,7 @@
 
         #endregion
 
+        //opciones del menú
         #region Methods
 
         private void LoadMenu()
