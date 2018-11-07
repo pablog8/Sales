@@ -23,6 +23,7 @@
             base.OnCreate(bundle);
             CrossCurrentActivity.Current.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.FormsMaps.Init(this, bundle);
             ImageCircleRenderer.Init();
             LoadApplication(new App());
         }
