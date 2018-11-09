@@ -47,6 +47,12 @@ namespace Sales.ViewModels
                 App.Master.IsPresented = false;
                 await App.Navigator.PushAsync(new MapPage());
             }
+            else if (this.PageName == "Presentation")
+            {
+                //para que oculte la master page
+                App.Master.IsPresented = false;
+                await App.Navigator.PushAsync(new Presentacion());
+            }
         }
         #endregion
 

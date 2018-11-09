@@ -315,6 +315,7 @@
   <data name="CategoryError" xml:space="preserve">
     <value>Você deve selecionar uma categoria</value>
   </data>
-
-
+  <data name="Presentation" xml:space="preserve">
+    <value>Apresentação</value>
+  </data>
 </root>

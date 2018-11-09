@@ -529,6 +529,15 @@ namespace Sales.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Presentation.
+        /// </summary>
+        public static string Presentation {
+            get {
+                return ResourceManager.GetString("Presentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Price.
         /// </summary>
         public static string Price {

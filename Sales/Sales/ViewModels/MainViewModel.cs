@@ -90,6 +90,13 @@
             this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "ic_info",
+                PageName = "Presentation",
+                Title = Languages.Presentation,
+            });
+
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_info",
                 PageName = "AboutPage",
                 Title = Languages.About,
             });
@@ -107,6 +114,8 @@
                 PageName = "LoginPage",
                 Title = Languages.Exit,
             });
+
+
         }
 
 

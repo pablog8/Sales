@@ -329,9 +329,10 @@
             get { return Resource.CategoryError; }
         }
 
-
-
-
+        public static string Presentation
+        {
+            get { return Resource.Presentation; }
+        }
 
     }
 

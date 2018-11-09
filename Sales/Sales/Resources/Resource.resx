@@ -246,7 +246,7 @@
   <data name="Exit" xml:space="preserve">
 	<value>Close session</value>
   </data>
-<data name="NoProductsMessage" xml:space="preserve">
+  <data name="NoProductsMessage" xml:space="preserve">
 	<value>No products information available.</value>
   </data>
   <data name="FirstName" xml:space="preserve">
@@ -315,6 +315,7 @@
   <data name="CategoryError" xml:space="preserve">
     <value>You must select a category.</value>
   </data>
-
-
+  <data name="Presentation" xml:space="preserve">
+    <value>Presentation</value>
+  </data>
 </root>

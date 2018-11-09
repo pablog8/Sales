@@ -318,6 +318,7 @@ Note:
   <data name="CategoryError" xml:space="preserve">
     <value>Devi selezionare una categoria.</value>
   </data>
-
-
+  <data name="Presentation" xml:space="preserve">
+    <value>Presentazione</value>
+  </data>
 </root>
