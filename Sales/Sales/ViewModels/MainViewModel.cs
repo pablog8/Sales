@@ -25,7 +25,10 @@
 
         public RegisterViewModel Register { get; set; }
 
+        public ContactViewModel Contact { get; set; }
+
         public MyUserASP UserASP { get; set; }
+
 
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
 
@@ -113,6 +116,12 @@
                 Icon = "ic_exit_to_app",
                 PageName = "LoginPage",
                 Title = Languages.Exit,
+            });
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_exit_to_app",
+                PageName = "Contact",
+                Title = "Contacto",
             });
 
 

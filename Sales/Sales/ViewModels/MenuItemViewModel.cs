@@ -53,6 +53,15 @@ namespace Sales.ViewModels
                 App.Master.IsPresented = false;
                 await App.Navigator.PushAsync(new Presentacion());
             }
+            else if (this.PageName == "Contact")
+            {
+                //para que oculte la master page
+                App.Master.IsPresented = false;
+                MainViewModel.GetInstance().Contact = new ContactViewModel();
+                //Application.Current.MainPage = new NavigationPage(new Contact());
+                await App.Navigator.PushAsync(new Contact());
+
+            }
         }
         #endregion
 

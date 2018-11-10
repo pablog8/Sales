@@ -271,4 +271,7 @@
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\patrocinadores.png" />
+  </ItemGroup>
 </Project>
