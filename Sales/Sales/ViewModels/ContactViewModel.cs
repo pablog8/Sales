@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using Sales.Helpers;
+using Sales.Interfaces;
 using Xamarin.Forms;
 
 namespace Sales.ViewModels
@@ -109,6 +110,7 @@ namespace Sales.ViewModels
                 {
                     smtp.Send(message);
                 }
+                DependencyService.Get<IMessage>().LongAlert("Email enviado.");
             }
         }
        
