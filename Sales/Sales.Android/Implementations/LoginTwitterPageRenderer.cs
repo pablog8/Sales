@@ -2,13 +2,15 @@
     typeof(Sales.Views.LoginTwitterPage),
     typeof(Sales.Droid.Implementations.LoginTwitterPageRenderer))]
 
+
 namespace Sales.Droid.Implementations
 {
-    using System;
-    using System.Threading.Tasks;
     using Android.App;
     using Common.Models;
     using Newtonsoft.Json;
+    using Sales.Services;
+    using System;
+    using System.Threading.Tasks;
     using Xamarin.Auth;
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android;
@@ -19,27 +21,27 @@ namespace Sales.Droid.Implementations
         {
             base.OnElementChanged(e);
             var activity = this.Context as Activity;
-
-            var twitterConsumerKey = Xamarin.Forms.Application.Current.Resources["TwitterConsumerKey"].ToString();
-            var twitterConsumerSecret = Xamarin.Forms.Application.Current.Resources["TwitterConsumerSecret"].ToString();
-            var twitterRequestTokenURL = Xamarin.Forms.Application.Current.Resources["TwitterRequestTokenURL"].ToString();
-            var twitterAuthorizeURL = Xamarin.Forms.Application.Current.Resources["TwitterAuthorizeURL"].ToString();
-            var url = Xamarin.Forms.Application.Current.Resources["Url"].ToString();
-            var twitterAccessTokenURL = Xamarin.Forms.Application.Current.Resources["TwitterAccessTokenURL"].ToString();
+            var TwitterKey = Xamarin.Forms.Application.Current.Resources["TwitterKey"].ToString();
+            var TwitterSecret = Xamarin.Forms.Application.Current.Resources["TwitterSecret"].ToString();
+            var TwitterRequestURL = Xamarin.Forms.Application.Current.Resources["TwitterRequestURL"].ToString();
+            var TwitterAuthURL = Xamarin.Forms.Application.Current.Resources["TwitterAuthURL"].ToString();
+            var TwitterCallbackURL = Xamarin.Forms.Application.Current.Resources["TwitterCallbackURL"].ToString();
+            var TwitterURLAccess = Xamarin.Forms.Application.Current.Resources["TwitterURLAccess"].ToString();
 
             var auth = new OAuth1Authenticator(
-                consumerKey: twitterConsumerKey,
-                consumerSecret: twitterConsumerSecret,
-                requestTokenUrl: new Uri(twitterRequestTokenURL),
-                authorizeUrl: new Uri(twitterAuthorizeURL), callbackUrl: new Uri(url),
-                accessTokenUrl: new Uri(twitterAccessTokenURL));
+                consumerKey: TwitterKey,
+                consumerSecret: TwitterSecret,
+                requestTokenUrl: new Uri(TwitterRequestURL),
+                authorizeUrl: new Uri(TwitterAuthURL),
+                callbackUrl: new Uri(TwitterCallbackURL),
+                accessTokenUrl: new Uri(TwitterURLAccess));
 
             auth.Completed += async (sender, eventArgs) =>
             {
                 if (eventArgs.IsAuthenticated)
                 {
-                    TwitterResponse profile = await GetTwitterProfileAsync(eventArgs.Account);
-                    App.NavigateToProfile(profile, "Twitter");
+                    var token = await GetTwitterProfileAsync(eventArgs.Account);
+                    App.NavigateToProfile(token);
                 }
                 else
                 {
@@ -50,7 +52,7 @@ namespace Sales.Droid.Implementations
             activity.StartActivity(auth.GetUI(activity));
         }
 
-        public async Task<TwitterResponse> GetTwitterProfileAsync(Account account)
+        public async Task<TokenResponse> GetTwitterProfileAsync(Account account)
         {
             var TwitterProfileInfoURL = Xamarin.Forms.Application.Current.Resources["TwitterProfileInfoURL"].ToString(); var requestUrl = new OAuth1Request(
                 "GET",
@@ -58,7 +60,17 @@ namespace Sales.Droid.Implementations
                 account);
 
             var response = await requestUrl.GetResponseAsync();
-            return JsonConvert.DeserializeObject<TwitterResponse>(response.GetResponseText());
+            var responseTwitter = JsonConvert.DeserializeObject<TwitterResponse>(response.GetResponseText());
+            var url = Xamarin.Forms.Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Xamarin.Forms.Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Xamarin.Forms.Application.Current.Resources["UrlUsersController"].ToString();
+            var apiService = new ApiService();
+            var token = await apiService.LoginTwitter(
+                url,
+                prefix,
+                $"{controller}/LoginTwitter",
+                responseTwitter);
+            return token;
         }
     }
 }

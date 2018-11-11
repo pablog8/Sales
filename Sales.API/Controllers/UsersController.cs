@@ -89,6 +89,45 @@
             return Ok(answer);
         }
 
+        [HttpPost]
+        [Route("LoginTwitter")]
+        public IHttpActionResult LoginTwitter(TwitterResponse profile)
+        {
+            var user = UsersHelper.GetUserASP(profile.IdStr);
+            if (user != null)
+            {
+                return Ok(true); // TODO: Pending update the user with new twitter data
+            }
+
+            var firstName = string.Empty;
+            var lastName = string.Empty;
+            var fullName = profile.Name;
+            var posSpace = fullName.IndexOf(' ');
+            if (posSpace == -1)
+            {
+                firstName = fullName;
+                lastName = fullName;
+            }
+            else
+            {
+                firstName = fullName.Substring(0, posSpace);
+                lastName = fullName.Substring(posSpace + 1);
+            }
+
+            var userRequest = new UserRequest
+            {
+                EMail = profile.IdStr,
+                FirstName = firstName,
+                ImagePath = profile.ProfileImageUrl,
+                LastName = lastName,
+                Password = profile.IdStr,
+            };
+
+            var answer = UsersHelper.CreateUserASP(userRequest);
+            return Ok(answer);
+        }
+
+
     }
 }
 
