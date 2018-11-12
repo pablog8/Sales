@@ -88,8 +88,10 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="Implementations\Localize.cs" />
     <Compile Include="Implementations\LoginFacebookPageRenderer.cs" />
+    <Compile Include="Implementations\LoginTwitterPageRenderer.cs" />
     <Compile Include="Implementations\PathService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -130,6 +132,9 @@
     </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.5.231</Version>
+    </PackageReference>
+    <PackageReference Include="SQLite.Net-PCL">
+      <Version>3.1.1</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Connectivity">
       <Version>3.2.0</Version>
@@ -274,5 +279,14 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\patrocinadores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\miembroinferior.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\miembrosuperior.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\usuario.png" />
   </ItemGroup>
 </Project>

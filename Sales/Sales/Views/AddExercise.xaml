@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sales.Views.AddExercise">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Ejercicio " FontAttributes="Bold"></Label>
+            <Entry x:Name="nombresejercicio"
+                    Placeholder="Nombre ejercicio" />
+            <Label Text="Descripción " FontAttributes="Bold"></Label>
+            <Entry x:Name="descripcionEntry"
+                    Placeholder="Explicación, nº series, peso..."
+                   />
+
+            <Button x:Name="agregarlesion" Text="Añadir ejercicio"></Button>
+            <!-- Cool <Entry x:Name="salarioEntry"
+                  Placeholder="Salario"
+            Keyboard="Numeric" />comment -->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

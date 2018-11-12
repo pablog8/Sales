@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sales.Views.HomeAthletePage">
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout>
+
+                <Label Text="Gestión de Deportistas"
+                       Font="24"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold" />
+                <Button x:Name="nuevo" HorizontalOptions="End"
+                        Text="+"
+                    FontAttributes="Bold"
+                    HeightRequest="55"
+                    WidthRequest="55"
+                    BorderRadius="30"
+            BackgroundColor="Green"
+            TextColor="White" />
+
+                <ListView x:Name="listaListView" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell ImageSource="usuario.png" Text="{Binding NombreCompleto}"  TextColor="Black" Detail="{Binding FechaNacimientoEditada}" DetailColor="Gray">
+
+                            </ImageCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

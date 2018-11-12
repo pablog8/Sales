@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sales.Views.SelectMemberView">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- <controls:BindableRadioGroup x:Name="botonmiembro"/> -->
+            <Label Text="Elige donde se sitúa la lesión"></Label>
+            <Picker x:Name="pickermiembro" SelectedIndexChanged="eventopickermiembro"></Picker>
+             
+            <Image x:Name="imgmiembro"/>
+            <Button x:Name="botonsiguiente" Text="Siguiente" Clicked="EventoBoton" BackgroundColor="SeaGreen" TextColor="Wheat" IsVisible="False"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

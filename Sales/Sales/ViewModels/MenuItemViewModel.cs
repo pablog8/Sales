@@ -62,6 +62,15 @@ namespace Sales.ViewModels
                 await App.Navigator.PushAsync(new Contact());
 
             }
+            else if (this.PageName == "Paciente")
+            {
+                //para que oculte la master page
+                App.Master.IsPresented = false;
+                //MainViewModel.GetInstance().Contact = new ContactViewModel();
+                //Application.Current.MainPage = new NavigationPage(new Contact());
+                await App.Navigator.PushAsync(new HomeAthletePage());
+
+            }
         }
         #endregion
 

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sales.Views.EditAthlete">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10" Spacing="10">
+                <Label Text="Editar Deportista"
+                       Font="24"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold" />
+                <Entry x:Name="nombresEntry"
+                        Placeholder="Nombres" />
+                <Entry x:Name="apellidosEntry"
+                        Placeholder="Apellidos" />
+                <Entry x:Name="emailEntry"
+                    Placeholder="Email" />
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Fecha Nacimiento "
+                            VerticalOptions="Center" />
+                    <DatePicker x:Name="fechaContratoDatePicker" />
+                    <Label Text="Activo: "
+                           VerticalOptions="Center" />
+                    <Switch x:Name="activoSwitch"
+                            VerticalOptions="Center"
+                            IsToggled="True" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="actualizarButton"
+                            Text="Actualizar"
+                            BackgroundColor="Teal"
+                            TextColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center" />
+                    <Button x:Name="borrarButton"
+                            Text="Borrar"
+                            BackgroundColor="Red"
+                            TextColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center" />
+
+                </StackLayout>
+                <Button x:Name="lesionesButton"
+                        Text="Gestión de Lesiones"
+            BackgroundColor="Navy"
+            TextColor="White" />
+                <!--<ListView x:Name="listaaListView" /> -->
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

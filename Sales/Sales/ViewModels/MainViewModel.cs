@@ -123,6 +123,12 @@
                 PageName = "Contact",
                 Title = "Contacto",
             });
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_exit_to_app",
+                PageName = "Paciente",
+                Title = "Historial de lesiones",
+            });
 
 
         }

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sales.Views.EditLesion">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="LUGAR " FontAttributes="Bold"></Label>
+            <Label x:Name="pickerlugar"></Label>
+            <Label Text="TIPO " FontAttributes="Bold"></Label>
+            <Label x:Name="pickertipo"></Label>
+            <Label Text="NUMERO DE LESIONES " FontAttributes="Bold"></Label>
+            <Entry x:Name="numeroLesionesEntry"
+                  Placeholder="Nº lesiones"
+                   Keyboard="Numeric" ></Entry>
+            <Button x:Name="actualizarlesion" Text="Actualizar nº lesiones"></Button>
+            <Button x:Name="borrarlesion" Text="Eliminar lesion"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
