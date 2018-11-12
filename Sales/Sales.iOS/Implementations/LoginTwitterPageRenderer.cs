@@ -68,7 +68,7 @@ namespace Sales.iOS.Implementations
             var url = Xamarin.Forms.Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Xamarin.Forms.Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Xamarin.Forms.Application.Current.Resources["UrlUsersController"].ToString();
-            var apiService = new ApiService();
+            var apiService = new APIService();
             var token = await apiService.LoginTwitter(
                 url,
                 prefix,
