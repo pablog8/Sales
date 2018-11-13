@@ -258,22 +258,22 @@
     <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\splash_1024x768.png">
+    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\logotipok1.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\splash_1536x2048.png">
+    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\logotipok2.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\splash_2048x1536.png">
+    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\logotipok3.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\splash_640x1136.png">
+    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\logotipok4.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\splash_640x960.png">
+    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\logotipok5.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\splash_768x1024.png">
+    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\logotipok6.png">
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>

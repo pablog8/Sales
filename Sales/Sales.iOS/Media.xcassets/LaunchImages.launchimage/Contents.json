@@ -7,7 +7,7 @@
       "scale": "2x",
       "size": "640x960",
       "idiom": "iphone",
-      "filename": "splash_640x960.png"
+      "filename": "logotipok1.png"
     },
     {
       "orientation": "portrait",
@@ -17,7 +17,7 @@
       "scale": "2x",
       "size": "640x1136",
       "idiom": "iphone",
-      "filename": "splash_640x1136.png"
+      "filename": "logotipok2.png"
     },
     {
       "orientation": "portrait",
@@ -26,7 +26,7 @@
       "scale": "1x",
       "size": "768x1024",
       "idiom": "ipad",
-      "filename": "splash_768x1024.png"
+      "filename": "logotipok3.png"
     },
     {
       "orientation": "landscape",
@@ -35,7 +35,7 @@
       "scale": "1x",
       "size": "1024x768",
       "idiom": "ipad",
-      "filename": "splash_1024x768.png"
+      "filename": "logotipok5.png"
     },
     {
       "orientation": "portrait",
@@ -44,7 +44,7 @@
       "scale": "2x",
       "size": "1536x2048",
       "idiom": "ipad",
-      "filename": "splash_1536x2048.png"
+      "filename": "logotipok4.png"
     },
     {
       "orientation": "landscape",
@@ -53,7 +53,7 @@
       "scale": "2x",
       "size": "2048x1536",
       "idiom": "ipad",
-      "filename": "splash_2048x1536.png"
+      "filename": "logotipok6.png"
     }
   ],
   "properties": {},
