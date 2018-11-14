@@ -40,13 +40,13 @@ namespace Sales.ViewModels
 
                 MainViewModel.GetInstance().Login = new LoginViewModel();
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
-            }
+            }/*
             else if (this.PageName =="AboutPage")
             {
                 //para que oculte la master page
                 App.Master.IsPresented = false;
                 await App.Navigator.PushAsync(new MapPage());
-            }
+            }*/
             else if (this.PageName == "Presentation")
             {
                 //para que oculte la master page
@@ -69,6 +69,28 @@ namespace Sales.ViewModels
                 //MainViewModel.GetInstance().Contact = new ContactViewModel();
                 //Application.Current.MainPage = new NavigationPage(new Contact());
                 await App.Navigator.PushAsync(new HomeAthletePage());
+
+            }
+            else if (this.PageName == "Exercises")
+            {
+                //para que oculte la master page
+                App.Master.IsPresented = false;
+                //MainViewModel.GetInstance().Contact = new ContactViewModel();
+                //Application.Current.MainPage = new NavigationPage(new Contact());
+                MainViewModel.GetInstance().Categories = new CategoriesViewModel();
+                //Application.Current.MainPage = new NavigationPage(new LoginPage());
+                await App.Navigator.PushAsync(new CategoriesPage());
+
+            }
+            else if (this.PageName == "Videos")
+            {
+                //para que oculte la master page
+                App.Master.IsPresented = false;
+                //MainViewModel.GetInstance().Contact = new ContactViewModel();
+                //Application.Current.MainPage = new NavigationPage(new Contact());
+                //MainViewModel.GetInstance().Categories = new CategoriesViewModel();
+                //Application.Current.MainPage = new NavigationPage(new LoginPage());
+                await App.Navigator.PushAsync(new VideosPage());
 
             }
         }

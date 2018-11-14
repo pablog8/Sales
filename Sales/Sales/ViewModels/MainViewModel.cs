@@ -92,43 +92,53 @@
 
             this.Menu.Add(new MenuItemViewModel
             {
-                Icon = "ic_info",
+                Icon = "message",
                 PageName = "Presentation",
                 Title = Languages.Presentation,
             });
-
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "user",
+                PageName = "Paciente",
+                Title = "Gestión de lesiones",
+            });
+            /*
             this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "ic_info",
                 PageName = "AboutPage",
                 Title = Languages.About,
             });
-
+            */
+            
             this.Menu.Add(new MenuItemViewModel
             {
-                Icon = "ic_phonelink_setup",
-                PageName = "SetupPage",
-                Title = Languages.Setup,
+                Icon = "contacts",
+                PageName = "Exercises",
+                Title = "Ejercicios",
             });
 
             this.Menu.Add(new MenuItemViewModel
             {
-                Icon = "ic_exit_to_app",
-                PageName = "LoginPage",
-                Title = Languages.Exit,
+                Icon = "videos",
+                PageName = "Videos",
+                Title = "Videos",
             });
+
+
             this.Menu.Add(new MenuItemViewModel
             {
-                Icon = "ic_exit_to_app",
+                Icon = "information",
                 PageName = "Contact",
                 Title = "Contacto",
             });
             this.Menu.Add(new MenuItemViewModel
             {
-                Icon = "ic_exit_to_app",
-                PageName = "Paciente",
-                Title = "Historial de lesiones",
+                Icon = "exit",
+                PageName = "LoginPage",
+                Title = Languages.Exit,
             });
+
 
 
         }
