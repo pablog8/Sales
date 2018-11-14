@@ -88,7 +88,7 @@ namespace Sales.ViewModels
                 App.Master.IsPresented = false;
                 //MainViewModel.GetInstance().Contact = new ContactViewModel();
                 //Application.Current.MainPage = new NavigationPage(new Contact());
-                //MainViewModel.GetInstance().Categories = new CategoriesViewModel();
+                MainViewModel.GetInstance().Videos = new VideosViewModel();
                 //Application.Current.MainPage = new NavigationPage(new LoginPage());
                 await App.Navigator.PushAsync(new VideosPage());
 

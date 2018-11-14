@@ -75,7 +75,7 @@
         public ProductsViewModel(Category category)
         {
             instance = this;
-
+            
             this.apiService = new APIService();
             this.Category = category;
             this.dataService = new DataService();

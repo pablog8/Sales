@@ -13,6 +13,7 @@
             <x:String x:Key="UrlProductsController">/Products</x:String>
             <x:String x:Key="UrlUsersController">/Users</x:String>
             <x:String x:Key="UrlCategoriesController">/Categories</x:String>
+            <x:String x:Key="UrlVideosController">/Videos</x:String>
 
             <!-- Facebook -->
             <x:String x:Key="FacebookAppID">299281540670328</x:String>
