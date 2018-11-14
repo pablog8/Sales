@@ -18,5 +18,7 @@
 
         //Mapea la clase Products a la base de datos
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Video> Videos { get; set; }
     }
 }
