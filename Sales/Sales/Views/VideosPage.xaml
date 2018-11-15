@@ -5,7 +5,7 @@
              x:Class="Sales.Views.VideosPage"
              BackgroundColor="Silver"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Videos">
+             Title="Listado de VÍDEOS">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Videos}"

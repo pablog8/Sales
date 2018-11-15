@@ -25,6 +25,8 @@
 
         public AddProductViewModel AddProduct { get; set; }
 
+        public AddAthleteViewModel AddAthlete { get; set; }
+
         public RegisterViewModel Register { get; set; }
 
         public ContactViewModel Contact { get; set; }

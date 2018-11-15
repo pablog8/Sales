@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Sales.Helpers"
+             x:Class="Sales.Views.AddAthleteView"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate AddProduct}">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding AddProduct}">
+
+            <StackLayout          
+            Padding="5">
+                <Image
+                     Source="{Binding ImageSource}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+                <Label 
+                        FontSize="Small"
+                        HorizontalOptions="Center"
+                        Text="{i18n:Translate ChangeImage}">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{i18n:Translate Description}"
+                        VerticalOptions="Center">
+
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Nombre}"
+                Placeholder="{i18n:Translate DescriptionPlaceholder}">
+
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Apellidos"
+                        VerticalOptions="Center">
+
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Apellidos}"
+                Placeholder="{i18n:Translate DescriptionPlaceholder}">
+
+                    </Entry>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Apellidos"
+                        VerticalOptions="Center">
+
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Email}"
+                Placeholder="{i18n:Translate DescriptionPlaceholder}">
+
+                    </Entry>
+
+
+
+
+                </Grid>
+                <Button
+                
+                Text="{i18n:Translate Save}"
+                BorderRadius="23"
+                Command="{Binding SaveCommand}"
+                HeightRequest="46"
+                IsEnabled="{Binding IsEnabled}"
+                BackgroundColor="Navy"
+                TextColor="White">
+
+
+
+                </Button>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
