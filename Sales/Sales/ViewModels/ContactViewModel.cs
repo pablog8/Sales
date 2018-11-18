@@ -12,8 +12,10 @@ using Xamarin.Forms;
 
 namespace Sales.ViewModels
 {
+    
     public class ContactViewModel : BaseViewModel
     {
+        
         #region Properties
         public string IntroducirEmail { get; set; }
 
@@ -24,7 +26,7 @@ namespace Sales.ViewModels
         public string IntroducirNombre { get; set; }
 
         #endregion
-
+        
         #region Commands
 
         public ICommand SendEmailCommand
@@ -37,6 +39,7 @@ namespace Sales.ViewModels
 
         private async void SendEmail()
         {
+            
             if (string.IsNullOrEmpty(IntroducirNombre))
             {
                 await Application.Current.MainPage.DisplayAlert(

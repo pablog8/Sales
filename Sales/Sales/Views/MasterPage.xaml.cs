@@ -15,13 +15,15 @@ namespace Sales.Views
 		public MasterPage ()
 		{
 			InitializeComponent ();
-		}
+            //App.Master.IsPresented = true;
+        }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             App.Navigator = Navigator;
             App.Master = this;
+           // App.Master.IsPresented = true;
         }
     }
     

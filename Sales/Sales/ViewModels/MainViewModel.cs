@@ -138,6 +138,12 @@
             });
             this.Menu.Add(new MenuItemViewModel
             {
+                Icon = "iconfinanciacion",
+                PageName = "Financiacion",
+                Title = "Financiación",
+            });
+            this.Menu.Add(new MenuItemViewModel
+            {
                 Icon = "exit",
                 PageName = "LoginPage",
                 Title = Languages.Exit,

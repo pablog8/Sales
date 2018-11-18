@@ -86,6 +86,7 @@ namespace Sales
 
             MainViewModel.GetInstance().Categories = new CategoriesViewModel();
             Application.Current.MainPage = new MasterPage();
+
         }
 
         protected override void OnStart ()

@@ -93,6 +93,17 @@ namespace Sales.ViewModels
                 await App.Navigator.PushAsync(new VideosPage());
 
             }
+            else if (this.PageName == "Financiacion")
+            {
+                //para que oculte la master page
+                App.Master.IsPresented = false;
+                //MainViewModel.GetInstance().Contact = new ContactViewModel();
+                //Application.Current.MainPage = new NavigationPage(new Contact());
+                //MainViewModel.GetInstance().Videos = new VideosViewModel();
+                //Application.Current.MainPage = new NavigationPage(new LoginPage());
+                await App.Navigator.PushAsync(new Financiacion());
+
+            }
         }
         #endregion
 
