@@ -4,7 +4,7 @@
              x:Class="Sales.Views.AddExercise"
              Title="Añadir Ejercicio personalizado">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="20,20">
             <Label Text="Ejercicio " FontAttributes="Bold" FontSize="Medium"></Label>
             <Entry x:Name="nombresejercicio"
                     Placeholder="Nombre ejercicio" />

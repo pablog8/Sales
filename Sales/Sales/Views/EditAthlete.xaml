@@ -11,13 +11,13 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontAttributes="Bold" />-->
-                <Label Text="Nombre" FontAttributes="Bold" TextColor="Black" FontSize="Medium"/>
+                <Label Text="Nombre" FontAttributes="Bold"  FontSize="Medium"/>
                 <Entry x:Name="nombresEntry"
                         Placeholder="Nombres" />
-                <Label Text="Apellidos" FontAttributes="Bold" TextColor="Black" FontSize="Medium"/>
+                <Label Text="Apellidos" FontAttributes="Bold"  FontSize="Medium"/>
                 <Entry x:Name="apellidosEntry"
                         Placeholder="Apellidos" />
-                <Label Text="Email" FontAttributes="Bold" TextColor="Black" FontSize="Medium"/>
+                <Label Text="Email" FontAttributes="Bold"  FontSize="Medium"/>
                 <Entry x:Name="emailEntry"
                     Placeholder="Email" />
 

@@ -15,6 +15,7 @@
 
                 <Label x:Name="labelLesiones"
                        Font="24"
+                       TextColor="Black"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontAttributes="Bold" />

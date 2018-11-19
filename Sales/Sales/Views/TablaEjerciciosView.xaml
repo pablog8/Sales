@@ -13,6 +13,7 @@
             <StackLayout>
                 <Label x:Name="labelTabla"
                        Font="24"
+                       TextColor="Black"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontAttributes="Bold" />
