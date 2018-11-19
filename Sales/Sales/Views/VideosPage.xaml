@@ -50,7 +50,7 @@
                                         Grid.Column="1"
                                         FontAttributes="Bold"
                                         FontSize="Large"
-                                        Text="{Binding Description}"
+                                        Text="{Binding NombreVideo}"
                                         VerticalOptions="Center">
                                     </Label>
                                     <Image

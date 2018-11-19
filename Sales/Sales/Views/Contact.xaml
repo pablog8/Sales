@@ -12,10 +12,11 @@
                 <!--<forms:MediaElement HorizontalOptions = "Fill"  VerticalOptions = "Center"  HeightRequest = "240"  x:Name = "Media"  AreTransportControlsEnabled = "true" Source="https://www.youtube.com/embed/ju7s6tS0yqw" ></forms:MediaElement> -->
 
                 <!--<Image Source="patrocinadores.jpg" WidthRequest="350" HeightRequest="350" />  -->
-                
 
-                <Label Text="CONTACTO" FontAttributes="Bold" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-
+                <Label Text="CONTÁCTANOS" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                <Label></Label>
+                <Label Text="Completa el siguiente formulario para contactarte con nosotros"></Label>
+                <Label></Label>
                 <Label Text="Nombre" FontAttributes="Bold"></Label>
                 <Entry Text="{Binding IntroducirNombre}" Placeholder="Introduzca su Nombre"/>
 
@@ -30,7 +31,7 @@
 
                 <Label Text="Mensaje" FontAttributes="Bold"></Label>
                 <Entry Text="{Binding IntroducirMensaje}" Placeholder="Introduzca su Mensaje"/>
-
+                <Label></Label>
                 <Button Text="Enviar comentario" BackgroundColor="SeaGreen" TextColor="Wheat" Command="{Binding SendEmailCommand}"/>
             </StackLayout>
         </ScrollView>

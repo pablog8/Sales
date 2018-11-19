@@ -4,10 +4,13 @@
              x:Class="Sales.Views.Financiacion"
              Title="Financiación">
     <ContentPage.Content>
-        <StackLayout Margin="30,30">
-            <Label TextColor="Black" FontAttributes="Bold" Text="Kapta"></Label> 
-            <Label TextColor="Black" FontAttributes="None" Text="es una aplicación ideada y programada por Pablo García Fernández y ha sido financiada por:"/>
-            <Image Source="patrocinadores.jpg" WidthRequest="350" HeightRequest="350" />
+        <StackLayout Margin="25,25">
+            <Image Source="logotipokapta" WidthRequest="200" HeightRequest="100"></Image>
+            
+            <Label TextColor="Black" FontSize="Medium" FontAttributes="None" Text="App ideada y programada por Pablo García Fernández y financiada por:"/>
+            <Label></Label>
+            <Image Source="patrocinadores.jpg" WidthRequest="254" HeightRequest="300" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

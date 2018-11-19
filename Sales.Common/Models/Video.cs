@@ -11,6 +11,8 @@
 
         [Required]
         [StringLength(50)]
+        public string NombreVideo { get; set; }
+
         public string Description { get; set; }
 
         public string LinkVideo { get; set; }

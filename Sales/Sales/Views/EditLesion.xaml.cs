@@ -29,6 +29,7 @@ namespace Sales.Views
             pickertipo.Text = lesion.Tipo;
             numeroLesionesEntry.Text = lesion.NumLesiones.ToString();
 
+
             actualizarlesion.Clicked += Actualizarlesion_Clicked;
             borrarlesion.Clicked += Borrarlesion_Clicked;
         }

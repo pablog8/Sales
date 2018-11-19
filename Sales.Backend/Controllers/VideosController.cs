@@ -16,7 +16,7 @@
 
         public async Task<ActionResult> Index()
         {
-            return View(await this.db.Videos.OrderBy(c => c.Description).ToListAsync());
+            return View(await this.db.Videos.OrderBy(c => c.NombreVideo).ToListAsync());
         }
 
 
@@ -55,6 +55,7 @@
             return new Video
             {
                 VideoId = view.VideoId,
+                NombreVideo = view.NombreVideo,
                 Description = view.Description,
                 LinkVideo = view.LinkVideo,
                 ImagePath = pic,
@@ -84,6 +85,7 @@
             return new VideoView
             {
                 VideoId = video.VideoId,
+                NombreVideo = video.NombreVideo,
                 Description = video.Description,
                 LinkVideo = video.LinkVideo,
                 ImagePath = video.ImagePath,

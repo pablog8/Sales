@@ -98,26 +98,28 @@
                 var myListVideosItemViewModel = this.MyVideos.Select(c => new VideoItemViewModel
                 {
                     VideoId = c.VideoId,
+                    NombreVideo = c.NombreVideo,
                     LinkVideo = c.LinkVideo,
                     Description = c.Description,
                     ImagePath = c.ImagePath,
                 });
                 //Arma la observablecollection y comprueba si hay filtro
                 this.Videos = new ObservableCollection<VideoItemViewModel>(
-                    myListVideosItemViewModel.OrderBy(c => c.Description));
+                    myListVideosItemViewModel.OrderBy(c => c.NombreVideo));
             }
             else
             {
                 var myListVideosItemViewModel = this.MyVideos.Select(c => new VideoItemViewModel
                 {
                     VideoId = c.VideoId,
+                    NombreVideo = c.NombreVideo,
                     LinkVideo = c.LinkVideo,
                     Description = c.Description,
                     ImagePath = c.ImagePath,
-                }).Where(c => c.Description.ToLower().Contains(this.Filter.ToLower())).ToList();
+                }).Where(c => c.NombreVideo.ToLower().Contains(this.Filter.ToLower())).ToList();
 
                 this.Videos = new ObservableCollection<VideoItemViewModel>(
-                    myListVideosItemViewModel.OrderBy(c => c.Description));
+                    myListVideosItemViewModel.OrderBy(c => c.NombreVideo));
             }
         }
         #endregion

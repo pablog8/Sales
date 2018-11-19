@@ -94,12 +94,14 @@
         {
             this.Menu = new ObservableCollection<MenuItemViewModel>();
 
+            /*
             this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "message",
                 PageName = "Presentation",
                 Title = Languages.Presentation,
-            });
+            
+            */
             this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "user",

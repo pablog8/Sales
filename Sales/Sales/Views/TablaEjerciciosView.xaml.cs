@@ -29,7 +29,8 @@ namespace Sales.Views
             new Thickness(10, 10, 10, 10));
 
 
-            labelTabla.Text = "Tabla de ejercicios " + Environment.NewLine + deportistaa.NombreCompleto;
+            //labelTabla.Text = "Tabla de ejercicios " + Environment.NewLine + deportistaa.NombreCompleto;
+            labelTabla.Text = deportistaa.NombreCompleto;
             listaListView.ItemTemplate = new DataTemplate(typeof(TablaEjerciciosCell));
             listaListView.RowHeight = 70;
             //mostrar la lista con los datos previamente ingresados

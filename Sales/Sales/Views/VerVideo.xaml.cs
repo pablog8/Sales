@@ -18,12 +18,12 @@ namespace Sales.Views
 			InitializeComponent ();
             //this.Video = video;
             //string video = "https://www.youtube.com/embed/xFnHTQn5iqo";
-            
+            string nombre = video.NombreVideo;
             string linkk = video.LinkVideo;
             string descripcion = video.Description;
             HtmlWebViewSource personHtmlSource = new HtmlWebViewSource();
             personHtmlSource.SetBinding(HtmlWebViewSource.HtmlProperty, "HTMLDesc");
-            personHtmlSource.Html = @"<html ><body style='background-color : #D4E6F1;' ><center><h2>" + video.Description + "</h2></center><div style=' position: relative; padding-bottom: 56.25%; padding-top: 25px;'>   <iframe style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'  src='" + linkk + "' frameborder='0' allowfullscreen></iframe></div> </body></html>";
+            personHtmlSource.Html = @"<html ><body style='background-color : #D4E6F1;' ><center><h2>" + nombre + "</h2></center><div style=' position: relative; padding-bottom: 56.25%; padding-top: 25px;'>   <iframe style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'  src='" + linkk + "' frameborder='0' allowfullscreen></iframe></div><br>" + descripcion + " </body></html>";
             var browser = new WebView();
             browser.Source = personHtmlSource;
             Content = browser;

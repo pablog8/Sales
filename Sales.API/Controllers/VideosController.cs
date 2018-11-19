@@ -12,7 +12,7 @@
 
         public IQueryable<Video> GetVideos()
         {
-            return db.Videos.OrderBy(c => c.Description);
+            return db.Videos.OrderBy(c => c.NombreVideo);
         }
     }
 

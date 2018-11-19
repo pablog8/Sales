@@ -26,7 +26,8 @@ namespace Sales.Views
             new Thickness(10, 10, 10, 10));
 
 
-            labelLesiones.Text = "Cuadro de lesiones de " + Environment.NewLine + deportista.NombreCompleto;
+            //labelLesiones.Text = "Cuadro de lesiones de " + Environment.NewLine + deportista.NombreCompleto;
+            labelLesiones.Text = deportista.NombreCompleto;
             listaListView.ItemTemplate = new DataTemplate(typeof(Lesioncell));
             listaListView.RowHeight = 70;
             //mostrar la lista con los datos previamente ingresados

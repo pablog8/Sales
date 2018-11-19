@@ -1,19 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Sales.Views.EditAthlete">
+             x:Class="Sales.Views.EditAthlete"
+             Title="Editar Deportista">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10" Spacing="10">
-                <Label Text="Editar Deportista"
+                <!--<Label Text="Editar Deportista"
                        Font="24"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
-                       FontAttributes="Bold" />
+                       FontAttributes="Bold" />-->
+                <Label Text="Nombre" FontAttributes="Bold" TextColor="Black" FontSize="Medium"/>
                 <Entry x:Name="nombresEntry"
                         Placeholder="Nombres" />
+                <Label Text="Apellidos" FontAttributes="Bold" TextColor="Black" FontSize="Medium"/>
                 <Entry x:Name="apellidosEntry"
                         Placeholder="Apellidos" />
+                <Label Text="Email" FontAttributes="Bold" TextColor="Black" FontSize="Medium"/>
                 <Entry x:Name="emailEntry"
                     Placeholder="Email" />
 
