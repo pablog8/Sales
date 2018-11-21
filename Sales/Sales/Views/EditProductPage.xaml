@@ -4,7 +4,7 @@
               xmlns:i18n="clr-namespace:Sales.Helpers"
              x:Class="Sales.Views.EditProductPage"
               BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate EditProduct}">
+             Title="Editar ejercicio">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding EditProduct}">
