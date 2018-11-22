@@ -268,7 +268,7 @@
                     new StoreCameraMediaOptions
                     {
                         Directory = "Sample",
-                        Name = "test.jpg",
+                        Name = "nouser.jpg",
                         PhotoSize = PhotoSize.Small,
                     }
                 );

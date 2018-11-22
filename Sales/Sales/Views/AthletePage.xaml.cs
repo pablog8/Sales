@@ -62,8 +62,7 @@ namespace Sales.Views
         {
             await Navigation.PushAsync(new EditAthlete((Deportista)e.SelectedItem));
         }
+
        
-
-
     }
 }

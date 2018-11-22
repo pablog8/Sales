@@ -90,10 +90,7 @@
                 </Label>
                     </Grid>
                 </StackLayout>
-                <ActivityIndicator
-                	IsRunning="{Binding IsRunning}"
-                	VerticalOptions="CenterAndExpand">
-                </ActivityIndicator>
+               
 
                 <Button
                     	BackgroundColor="Navy"
@@ -105,7 +102,20 @@
                     	Text="{i18n:Translate Login}"
                     	TextColor="White">
                 </Button>
-                <StackLayout
+                <Button
+                    	BackgroundColor="#3b5998"
+                    	BorderRadius="23"
+                    	Command="{Binding LoginFacebookComand}"
+                    	HeightRequest="46"
+                    	HorizontalOptions="FillAndExpand"
+                    	Text="Login con Facebook"
+                    	TextColor="White">
+                </Button>
+                <ActivityIndicator
+                	IsRunning="{Binding IsRunning}"
+                	VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <!--<StackLayout
                 	HorizontalOptions="Center"
                 	Orientation="Horizontal"
                 	VerticalOptions="EndAndExpand">
@@ -118,12 +128,14 @@
                             <TapGestureRecognizer Command="{Binding LoginFacebookComand}"/>
                         </Image.GestureRecognizers>
                     </Image>
-                </StackLayout>
-                <Label
+                </StackLayout>-->
+
+                <!--<Label
                 	HorizontalOptions="Center"
                 	Text="Inicia sesión con Facebook"
                 	VerticalOptions="CenterAndExpand">
-                </Label>
+                </Label>-->
+                
                 <!--<Label
                 	HorizontalOptions="Center"
                 	Text="{i18n:Translate Forgot}"

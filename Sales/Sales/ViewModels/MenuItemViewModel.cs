@@ -68,6 +68,7 @@ namespace Sales.ViewModels
                 App.Master.IsPresented = false;
                 //MainViewModel.GetInstance().Contact = new ContactViewModel();
                 //Application.Current.MainPage = new NavigationPage(new Contact());
+                
                 await App.Navigator.PushAsync(new AthletePage());
 
             }

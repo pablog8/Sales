@@ -6,7 +6,7 @@
          	x:Class="Sales.Views.MenuPage"
          	BindingContext="{Binding Main, Source={StaticResource Locator}}"
          	Title="{i18n:Translate Menu}"
-         	BackgroundColor="Gray">
+         	BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout
         	Padding="5">
