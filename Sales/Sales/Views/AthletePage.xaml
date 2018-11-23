@@ -35,7 +35,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image
                                         Grid.Column="0"
-                                        Source="usercirculo"
+                                        Source="userlesion"
                                         WidthRequest="100">
 
 

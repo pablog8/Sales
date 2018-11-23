@@ -22,7 +22,7 @@
 	            FontSize="Large"
 	            HorizontalOptions="Center"
 	            Text="{Binding UserFullName}"
-	            TextColor="White">  
+	            TextColor="Black">  
             </Label>
 
             <ListView
@@ -49,7 +49,7 @@
                                 <Label
                                 	Grid.Column="1"
                                 	VerticalOptions="Center"
-                                	TextColor="White"
+                                	TextColor="Black"
                                 	Text="{Binding Title}">
                                 </Label>
                             </Grid>
