@@ -84,6 +84,7 @@
             {
                 Description = view.Description,
                 ImagePath = pic,
+                CategoryId = view.CategoryId,
                 IsAvailable = view.IsAvailable,
                 Price = view.Price,
                 ProductId = view.ProductId,
@@ -113,6 +114,7 @@
             return new ProductView
             {
                 Description = product.Description,
+                CategoryId = product.CategoryId,
                 ImagePath = product.ImagePath,
                 IsAvailable = product.IsAvailable,
                 Price = product.Price,

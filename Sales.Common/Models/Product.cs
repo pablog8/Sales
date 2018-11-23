@@ -38,7 +38,7 @@
         [DataType(DataType.Date)]
         public DateTime PublishOn { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(128)]
         public string UserId { get; set; }
 

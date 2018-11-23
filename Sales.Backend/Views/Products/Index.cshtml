@@ -15,6 +15,12 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Remarks)
         </th>
         <th>
@@ -38,13 +44,19 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Description)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Remarks)
         </td>
         <td>
             @if (!string.IsNullOrEmpty(item.ImagePath))
-             {
-                  <img src="@Url.Content(item.ImageFullPath)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
-             }
+        {
+            <img src="@Url.Content(item.ImageFullPath)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+    }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
@@ -56,9 +68,9 @@
             @Html.DisplayFor(modelItem => item.PublishOn)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ProductId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
