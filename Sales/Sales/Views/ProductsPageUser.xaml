@@ -2,14 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Sales.Helpers"
-             x:Class="Sales.Views.ProductsPage"
+             x:Class="Sales.Views.ProductsPageUser"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Ejercicios">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_action_add_circle.png" Command="{Binding AddProductCommand}">
-            
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             
@@ -20,7 +15,7 @@
                 Placeholder="{i18n:Translate Search}"
                 SearchCommand="{Binding SearchCommand}"
                 Text="{Binding Filter}">
-                
+
             </SearchBar>
             <ListView
                 
@@ -29,33 +24,33 @@
                 IsPullToRefreshEnabled="True"
                 ItemsSource="{Binding Products}"
                 RefreshCommand="{Binding RefreshCommand}">
-                
+
                 <!--HasUnevenRows="True" Para dimensionar automáticamente la altura de fila-->
                 <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
+                    <DataTemplate>
+                        <ViewCell>
                             <ViewCell.ContextActions>
                                 <MenuItem Text="{i18n:Translate Edit}" Command="{Binding EditProductCommand}"/>
                                 <MenuItem Text="{i18n:Translate Delete}" Command="{Binding DeleteProductCommand}" IsDestructive="True"/>
                             </ViewCell.ContextActions>
-                        <Grid>
+                            <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding EditProductCommand}"/>
                                 </Grid.GestureRecognizers>
-                            <Grid.ColumnDefinitions>
-                                <!-- ponemos * para que sea el ancho disponible por defecto-->
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <Grid.ColumnDefinitions>
+                                    <!-- ponemos * para que sea el ancho disponible por defecto-->
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                    <Image
+                                <Image
                                         Grid.Column="0"
                                         Source="{Binding ImageFullPath}"
                                         WidthRequest="100">
 
 
-                                    </Image>
+                                </Image>
                                 <StackLayout
                                     Grid.Column="1"
                                     VerticalOptions="Center">
@@ -64,40 +59,37 @@
                                     
                                          Text="{Binding Description}">
                                     </Label>
-                                    <!-- <Label
+                                    <Label
                                     
                                          Text="{Binding Remarks}">
 
-                                    </Label>-->
-                                    
-                                   
+                                    </Label>
 
                                 </StackLayout>
-                                <!--<Label
+
+
+                                <Label
                                 Grid.Column="2"
                                 HorizontalOptions="End"
                                 Text="{Binding Price, StringFormat='{0:C2}'}"
                                 VerticalOptions="Center">
-                            </Label>-->
-                            
-                            
-                                <!-- Formato de moneda con dos decimales-->
-                            
+                                    <!-- Formato de moneda con dos decimales-->
+                                </Label>
                                 <Image
                                     Grid.Column="3"
                                     Source="ic_chevron_right"
                                     VerticalOptions="Center">
-     
+
                                 </Image>
-                        </Grid>
-                        
-                    </ViewCell>
-                    
-                </DataTemplate>
+                            </Grid>
+
+                        </ViewCell>
+
+                    </DataTemplate>
                 </ListView.ItemTemplate>
 
             </ListView>
-           
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

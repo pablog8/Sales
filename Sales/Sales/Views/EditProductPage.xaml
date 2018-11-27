@@ -47,7 +47,7 @@
                 Placeholder="{i18n:Translate DescriptionPlaceholder}">
 
                     </Entry>
-                    <Label
+                    <!--<Label
                         Grid.Column="0"
                         Grid.Row="1"
                 Text="{i18n:Translate Price}"
@@ -61,7 +61,9 @@
                         Text="{Binding Product.Price}"
                 Placeholder="{i18n:Translate PricePlaceholder}">
 
-                    </Entry>
+                    </Entry>-->
+                    
+                    
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
@@ -120,6 +122,7 @@
                 Command="{Binding SaveCommand}"
                 HeightRequest="46"
                 IsEnabled="{Binding IsEnabled}"
+                IsVisible="{Binding IsVisible}"
                 BackgroundColor="Navy"
                 TextColor="White">
                     </Button>
@@ -131,6 +134,7 @@
                 Command="{Binding DeleteCommand}"
                 HeightRequest="46"
                 IsEnabled="{Binding IsEnabled}"
+                IsVisible="{Binding IsVisible}"
                 BackgroundColor="Red"
                 TextColor="White">
                     </Button>

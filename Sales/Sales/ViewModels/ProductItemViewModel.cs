@@ -37,7 +37,11 @@
 
         private async void EditProduct()
         {
-
+            /*
+            if(MainViewModel.GetInstance().UserASP.Email=="prueba3@usal.es")
+            {
+                await App.Navigator.PushAsync(new Presentacion());
+            }*/
             //Creamos una instancia y ligarlo a la viewmodel
             MainViewModel.GetInstance().EditProduct = new EditProductViewModel(this);
 
