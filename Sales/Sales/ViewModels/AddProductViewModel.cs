@@ -209,6 +209,7 @@
                     Languages.Accept);
                 return;
             }
+            
             if (string.IsNullOrEmpty(this.Price))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -226,7 +227,7 @@
                     Languages.Accept);
                 return;
             }
-
+            
             if (this.Category == null)
             {
                 await Application.Current.MainPage.DisplayAlert(

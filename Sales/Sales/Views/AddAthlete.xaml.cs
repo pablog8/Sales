@@ -1,5 +1,6 @@
 ﻿using Sales.Interfaces;
 using Sales.Lesiones;
+using Sales.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,6 +108,7 @@ namespace Sales.Views
                 Apellidos = apellidosEntry.Text,
                 Email = emailEntry.Text,
                 FechaNacimiento = fechaContratoDatePicker.Date,
+                IdUser = MainViewModel.GetInstance().UserASP.Email,
 
                 // Salario = decimal.Parse(salarioEntry.Text),
                 Activo = activoSwitch.IsToggled

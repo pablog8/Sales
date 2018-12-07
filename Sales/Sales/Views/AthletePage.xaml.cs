@@ -14,12 +14,13 @@ namespace Sales.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AthletePage : ContentPage
     {
-        public AthletePage()
+        string deportistaa;
+        public AthletePage(string deportista)
         {
             InitializeComponent();
 
             //listaListView.RowHeight = 70;
-
+            this.deportistaa = deportista;
             this.Padding = Device.OnPlatform(
             new Thickness(10, 20, 10, 10),
             new Thickness(10, 10, 10, 10),
@@ -54,7 +55,7 @@ namespace Sales.Views
             base.OnAppearing();
             using (var datos = new DataAccess())
             {
-                listaListView.ItemsSource = datos.GetDeportistas();
+                listaListView.ItemsSource = datos.GetDeportistass(this.deportistaa);
             }
         }
 

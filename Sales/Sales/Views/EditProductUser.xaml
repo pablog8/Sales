@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:i18n="clr-namespace:Sales.Helpers"
+             x:Class="Sales.Views.EditProductUser"
+              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Editar ejercicio">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding EditProduct}">
+
+            <StackLayout          
+            Padding="5" Margin="20,20">
+                <Image
+                     Source="{Binding ImageSource}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+                <Label >
+
+                </Label>
+               
+                    <Label
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Text="{i18n:Translate Description}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+
+                    </Label>
+                <Label 
+                        Text="{Binding Product.Description}"
+                           TextColor="Black"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+
+                </Label>
+
+                    <Label
+                        FontSize="Medium"
+                         TextColor="Black"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Remarks}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    </Label>
+                    <Label
+                        TextColor="Black"
+                        Text="{Binding Product.Remarks}"
+                        VerticalOptions="FillAndExpand">
+                    </Label>
+                <Label
+                        FontSize="Medium"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Category}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                </Label>
+                <Picker
+                        IsEnabled="False"
+                    TextColor="Black"
+                        ItemDisplayBinding="{Binding Description}"
+                        ItemsSource="{Binding Categories}"
+                        SelectedItem="{Binding Category}"
+                        Title="{i18n:Translate CategoryPlaceholder}">
+                </Picker>
+
+                <ActivityIndicator
+                IsRunning="{Binding IsRunning}"
+                VerticalOptions="CenterAndExpand">
+
+                </ActivityIndicator>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

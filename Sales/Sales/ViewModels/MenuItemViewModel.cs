@@ -69,7 +69,7 @@ namespace Sales.ViewModels
                 //MainViewModel.GetInstance().Contact = new ContactViewModel();
                 //Application.Current.MainPage = new NavigationPage(new Contact());
                 
-                await App.Navigator.PushAsync(new AthletePage());
+                await App.Navigator.PushAsync(new AthletePage(MainViewModel.GetInstance().UserASP.Email));
 
             }
             else if (this.PageName == "Exercises")

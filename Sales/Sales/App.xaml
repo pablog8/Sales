@@ -16,7 +16,7 @@
             <x:String x:Key="UrlVideosController">/Videos</x:String>
 
             <!-- Facebook -->
-            <x:String x:Key="FacebookAppID">299281540670328</x:String>
+            <x:String x:Key="FacebookAppID">437221640140902</x:String>
             <x:String x:Key="FacebookAuthURL">https://www.facebook.com/dialog/oauth/</x:String>
             <x:String x:Key="FacebookRedirectURL">https://www.facebook.com/connect/login_success.html</x:String>
             <x:String x:Key="FacebookScope">email</x:String>

@@ -61,7 +61,12 @@ namespace Sales.Lesiones
         {
             return connection.Table<Deportista>().OrderBy(c => c.Apellidos).ToList();
         }
+        //deportistas de un email
+        public List<Deportista> GetDeportistass(string clavedep)
+        {
+            return connection.Table<Deportista>().OrderBy(c => c.Apellidos).Where(c => c.IdUser == clavedep).ToList();
 
+        }
 
         //ENTRENADOR BASE DE DATOS////////////////
 
