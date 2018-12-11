@@ -41,13 +41,13 @@
                         VerticalOptions="Center">
 
                     </Label>
-                    <Entry
-                        Grid.Column="1"
+                    <Editor
+                         Grid.Column="1"
                         Grid.Row="0"
                         Text="{Binding Description}"
-                Placeholder="{i18n:Translate DescriptionPlaceholder}">
-
-                    </Entry>
+                >
+                    </Editor>
+                    
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"

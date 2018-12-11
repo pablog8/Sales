@@ -77,7 +77,7 @@
         {
             this.apiService = new APIService();
             this.IsEnabled = true;
-            this.ImageSource = "noproduct";
+            this.ImageSource = "noexercise";
             this.LoadCategories();
         }
         #endregion
@@ -259,7 +259,7 @@
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
             }
 
-            var location = await this.GetLocation();
+           // var location = await this.GetLocation();
 
             //metemos lo que mandemos al post como un producto
             var product = new Product
@@ -270,8 +270,8 @@
                 ImageArray = imageArray,
                 CategoryId = this.Category.CategoryId,
                 UserId = MainViewModel.GetInstance().UserASP.Id,
-                Latitude = location == null ? 0 : location.Latitude,
-                Longitude = location == null ? 0 : location.Longitude,
+            //    Latitude = location == null ? 0 : location.Latitude,
+            //    Longitude = location == null ? 0 : location.Longitude,
 
             };
 

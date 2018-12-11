@@ -23,16 +23,16 @@ namespace Sales.ViewModels
 
         private async void GotoCategory()
         {
+            /*
             if (MainViewModel.GetInstance().UserASP.Email == "prueba3@usal.es")
             {
                 MainViewModel.GetInstance().Products = new ProductsViewModel(this);// (this);
                 await App.Navigator.PushAsync(new ProductsPageUser());
-            }
-            else
-            {
+            }*/
+            
                 MainViewModel.GetInstance().Products = new ProductsViewModel(this);// (this);
                 await App.Navigator.PushAsync(new ProductsPage());
-            }
+            
             
         }
         #endregion

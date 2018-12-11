@@ -68,7 +68,7 @@
                     }
                 }
 
-                return null;
+                return "nouser";
             }
         }
 

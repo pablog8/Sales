@@ -18,8 +18,8 @@
         public int CategoryId { get; set; }
 
         //campo obligatorio
-        [Required]
-        [StringLength(50)]
+        //[Required]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [DataType(DataType.MultilineText)]
@@ -62,7 +62,7 @@
             {
                 if (string.IsNullOrEmpty(this.ImagePath))
                 {
-                    return "noproduct.png";
+                    return "noexercise.png";
                 }
                 //devuelve la imagen (pagina de backend)
                 return $"http://salesapiservices2018.azurewebsites.net/{this.ImagePath.Substring(1)}";

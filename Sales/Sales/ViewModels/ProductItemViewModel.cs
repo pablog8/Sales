@@ -46,7 +46,7 @@
             MainViewModel.GetInstance().EditProduct = new EditProductViewModel(this);
 
             //tiene que apilar otra pagina
-            await App.Navigator.PushAsync(new EditProductUser());
+            await App.Navigator.PushAsync(new EditProductPage());
             
         }
 
