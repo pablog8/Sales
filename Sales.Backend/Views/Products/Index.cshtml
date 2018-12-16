@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Products</h2>
+<h2>Ejercicios</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", new { }, new { @class ="btn btn-primary" } )
@@ -26,9 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ImagePath)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.IsAvailable)
         </th>
@@ -58,9 +56,7 @@
             <img src="@Url.Content(item.ImageFullPath)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
     }
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.IsAvailable)
         </td>

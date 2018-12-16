@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Sales.Views.AddAthlete">
+             x:Class="Sales.Views.AddAthlete"
+             Title="Nuevo Deportista">
     <ContentPage.Content>
         <StackLayout Padding="10" Spacing="10">
-            <Label Text="Nuevo Deportista"
+            <!-- <Label Text="Nuevo Deportista"
                     Font="24"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    FontAttributes="Bold" />
+                    FontAttributes="Bold" />-->
+            <Label Text="Nombre" FontAttributes="Bold"  FontSize="Medium"/>
             <Entry x:Name="nombresEntry"
                     Placeholder="Nombres" />
+            <Label Text="Apellidos" FontAttributes="Bold"  FontSize="Medium"/>
             <Entry x:Name="apellidosEntry"
                     Placeholder="Apellidos" />
+            <Label Text="Email" FontAttributes="Bold"  FontSize="Medium"/>
             <Entry x:Name="emailEntry"
                     Placeholder="Email" />
             <!-- Cool <Entry x:Name="salarioEntry"
@@ -23,11 +27,12 @@
                 <Label Text="Fecha Nacimiento: "
                    VerticalOptions="Center" />
                 <DatePicker x:Name="fechaContratoDatePicker"/>
-                <Label Text="Activo: "
+                <!--<Label Text="Activo: "
                     VerticalOptions="Center" />
                 <Switch x:Name="activoSwitch"
                     VerticalOptions="Center"
-                    IsToggled="True" />
+                    IsToggled="True" />-->
+                
             </StackLayout>
 
             <Button x:Name="agregarButton"

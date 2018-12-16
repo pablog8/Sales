@@ -4,15 +4,15 @@
              x:Class="Sales.Views.SelectMemberInf">
     <ContentPage.Content>
         <StackLayout Margin="20,20">
-            <Label Text="LUGAR " FontAttributes="Bold"></Label>
-            <Picker x:Name="pickerlugar" SelectedIndexChanged="eventopickerlugar"></Picker>
-            <Label Text="TIPO " FontAttributes="Bold"></Label>
-            <Picker x:Name="pickertipo"></Picker>
-            <Label Text="Nº DE LESIONES " FontAttributes="Bold"></Label>
+            <Label Text="LUGAR " FontAttributes="Bold" FontSize="Medium" TextColor="Black"></Label>
+            <Picker x:Name="pickerlugar" SelectedIndexChanged="eventopickerlugar" Title="Selecciona el lugar"></Picker>
+            <Label Text="TIPO " FontAttributes="Bold" FontSize="Medium" TextColor="Black"></Label>
+            <Picker x:Name="pickertipo" Title="Selecciona el tipo"></Picker>
+            <Label Text="Nº DE LESIONES " FontAttributes="Bold" FontSize="Medium" TextColor="Black"></Label>
             <Entry x:Name="numeroLesionesEntry"
                   Placeholder="Nº lesiones"
                    Keyboard="Numeric" ></Entry>
-            <Button x:Name="Agregarlesion" Text="agregarlesion"></Button>
+            <Button x:Name="Agregarlesion" Text="agregarlesion" BackgroundColor="SeaGreen" TextColor="White"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -3,6 +3,7 @@
     using GalaSoft.MvvmLight.Command;
     using Sales.Common.Models;
     using Sales.Helpers;
+    using Sales.Lesiones;
     using Sales.Views;
     using Services;
     using System;
@@ -10,7 +11,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class ProductItemViewModel : Product
+    public class ProductItemViewModelUser : Product
     {
 
         #region Attributes
@@ -18,8 +19,10 @@
         #endregion
 
         #region Constructors
-        public ProductItemViewModel()
+        Deportista deportistaa;
+        public ProductItemViewModelUser(Deportista deportista)
         {
+            this.deportistaa = deportista;
             this.apiService = new APIService();
         }
 
@@ -37,12 +40,12 @@
 
         private async void EditProduct()
         {
-            
-            if(MainViewModel.GetInstance().UserASP.Email=="prueba3@usal.es")
+
+            if (MainViewModel.GetInstance().UserASP.Email == "prueba3@usal.es")
             {
                 //Creamos una instancia y ligarlo a la viewmodel
-                MainViewModel.GetInstance().EditProduct = new EditProductViewModel(this);
-                await App.Navigator.PushAsync(new EditProductPage());
+                MainViewModel.GetInstance().EditProductt = new EditProductMessageViewModel(this, deportistaa);
+                await App.Navigator.PushAsync(new EditProductSend());
             }
             else
             {
@@ -52,8 +55,8 @@
                 //tiene que apilar otra pagina
                 await App.Navigator.PushAsync(new EditProductUser());
             }
-            
-            
+
+
         }
 
         public ICommand DeleteProductCommand
@@ -66,10 +69,10 @@
 
         private async void DeleteProduct()
         {
-            var answer =  await Application.Current.MainPage.DisplayAlert(
-                Languages.Confirm, 
-                Languages.DeleteConfirmation, 
-                Languages.Yes, 
+            var answer = await Application.Current.MainPage.DisplayAlert(
+                Languages.Confirm,
+                Languages.DeleteConfirmation,
+                Languages.Yes,
                 Languages.No);
             if (!answer)
             {
@@ -81,7 +84,7 @@
             //si la conexion a internet no ha sido exitosa
             if (!connection.IsSuccess)
             {
-               
+
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
 
@@ -94,11 +97,11 @@
 
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
 
-            var response = await this.apiService.Delete(url, prefix, controller, this.ProductId,Settings.TokenType, Settings.AccessToken);
+            var response = await this.apiService.Delete(url, prefix, controller, this.ProductId, Settings.TokenType, Settings.AccessToken);
 
             if (!response.IsSuccess)
             {
-               
+
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
 
                 return;
@@ -111,7 +114,8 @@
             var deletedProduct = productsViewModel.MyProducts.Where(p => p.ProductId == this.ProductId).FirstOrDefault();
 
             //si encontramos el producto
-            if (deletedProduct != null) {
+            if (deletedProduct != null)
+            {
                 productsViewModel.MyProducts.Remove(deletedProduct);
             }
             productsViewModel.RefreshList();

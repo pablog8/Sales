@@ -32,7 +32,7 @@ namespace Sales.Views
             emailEntry.Text = deportista.Email;
             fechaContratoDatePicker.Date = deportista.FechaNacimiento;
             //salarioEntry.Text = deportista.Salario.ToString();
-            activoSwitch.IsToggled = deportista.Activo;
+            //activoSwitch.IsToggled = deportista.Activo;
 
             actualizarButton.Clicked += ActualizarButton_Clicked;
             borrarButton.Clicked += BorrarButton_Clicked;
@@ -116,7 +116,7 @@ namespace Sales.Views
             deportista.Email = emailEntry.Text;
             // deportista.Salario = decimal.Parse(salarioEntry.Text);
             deportista.FechaNacimiento = fechaContratoDatePicker.Date;
-            deportista.Activo = activoSwitch.IsToggled;
+            //deportista.Activo = activoSwitch.IsToggled;
 
             using (var datos = new DataAccess())
             {

@@ -111,7 +111,7 @@ namespace Sales.Views
                 IdUser = MainViewModel.GetInstance().UserASP.Email,
 
                 // Salario = decimal.Parse(salarioEntry.Text),
-                Activo = activoSwitch.IsToggled
+               // Activo = activoSwitch.IsToggled
             };
 
             //insertamos el deportista en la base de datos
@@ -125,7 +125,7 @@ namespace Sales.Views
             emailEntry.Text = string.Empty;
             // salarioEntry.Text = string.Empty;
             fechaContratoDatePicker.Date = DateTime.Now;
-            activoSwitch.IsToggled = true;
+            //activoSwitch.IsToggled = true;
             DependencyService.Get<IMessage>().LongAlert("Deportista agregado");
             //await DisplayAlert("Confirmación", "Deportista agregado", "Aceptar");
             //  await Navigation.PushAsync(new Trabajo.HomePage());

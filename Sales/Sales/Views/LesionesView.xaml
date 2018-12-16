@@ -19,6 +19,10 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontAttributes="Bold" />
+                
+
+
+                <ListView x:Name="listaListView" Margin="10,10" SeparatorColor="AliceBlue" />
                 <StackLayout Orientation="Horizontal">
 
                     <Button x:Name="enviartabla"
@@ -33,13 +37,10 @@
                             TextColor="White"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center" /> -->
-                    
+
 
                 </StackLayout>
 
-
-
-                <ListView x:Name="listaListView" Margin="10,10" SeparatorColor="AliceBlue" />
             </StackLayout>
 
         </ScrollView>

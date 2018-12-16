@@ -18,10 +18,12 @@
         public VideosViewModel Videos { get; set; }
 
         public CategoriesViewModel Categories { get; set; }
+        public CategoriesViewModelUser Categoriess { get; set; }
 
         public EditProductViewModel EditProduct { get; set; }
-
+        public EditProductMessageViewModel EditProductt { get; set; }
         public ProductsViewModel Products { get; set; }
+        public ProductsViewModelUser Productss { get; set; }
 
         public AddProductViewModel AddProduct { get; set; }
 

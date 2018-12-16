@@ -17,6 +17,8 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontAttributes="Bold" />
+              
+                <ListView x:Name="listaListView" />
                 <StackLayout Orientation="Horizontal">
                     <Button x:Name="enviaremail" Image="ic_email.png" HorizontalOptions="FillAndExpand"
                         Text="Enviar tabla por email"
@@ -35,9 +37,8 @@
                     BorderRadius="30"
             BackgroundColor="Green"
             TextColor="White" />-->
-                    
+
                 </StackLayout>
-                <ListView x:Name="listaListView" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

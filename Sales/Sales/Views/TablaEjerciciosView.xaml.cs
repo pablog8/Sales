@@ -1,4 +1,5 @@
 ﻿using Sales.Lesiones;
+using Sales.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Sales.Views
             this.deportistaa = deportista;
 
             //listaListView.RowHeight = 70;
-
+            
             this.Padding = Device.OnPlatform(
             new Thickness(10, 20, 10, 10),
             new Thickness(10, 10, 10, 10),
@@ -90,7 +91,11 @@ namespace Sales.Views
 
         private async void Nuevo_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddExercise(deportistaa));
+            MainViewModel.GetInstance().Categoriess = new CategoriesViewModelUser(deportistaa);
+            //Application.Current.MainPage = new NavigationPage(new LoginPage());
+           await App.Navigator.PushAsync(new CategoriesPageUser());
+            //await Navigation.PushAsync(new CategoriesPageUser(deportistaa));
+            //await Navigation.PushAsync(new AddExercise(deportistaa));
         }
 
         //actualizala lista en la pantalla

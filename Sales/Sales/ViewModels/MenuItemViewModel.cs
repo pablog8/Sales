@@ -94,6 +94,7 @@ namespace Sales.ViewModels
                 await App.Navigator.PushAsync(new VideosPage());
 
             }
+
             else if (this.PageName == "Financiacion")
             {
                 //para que oculte la master page

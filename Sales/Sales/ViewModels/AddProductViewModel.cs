@@ -209,7 +209,7 @@
                     Languages.Accept);
                 return;
             }
-            
+            /*
             if (string.IsNullOrEmpty(this.Price))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -219,6 +219,7 @@
                 return;
             }
             var price = decimal.Parse(this.Price);
+            /*
             if(price < 0)
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -226,7 +227,7 @@
                     Languages.PriceError,
                     Languages.Accept);
                 return;
-            }
+            }*/
             
             if (this.Category == null)
             {
@@ -265,7 +266,7 @@
             var product = new Product
             {
                 Description = this.Description,
-                Price = price,
+                //Price = price,
                 Remarks = this.Remarks,
                 ImageArray = imageArray,
                 CategoryId = this.Category.CategoryId,

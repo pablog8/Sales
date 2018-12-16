@@ -56,7 +56,7 @@ public class DataService
             Description = p.Description,
             ImagePath = p.ImagePath,
             IsAvailable = p.IsAvailable,
-            Price = p.Price,
+            //Price = p.Price,
             ProductId = p.ProductId,
             PublishOn = p.PublishOn,
             Remarks = p.Remarks,

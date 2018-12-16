@@ -12,8 +12,9 @@
     using Xamarin.Forms;
     using System.Linq;
     using System.Threading.Tasks;
+    using Sales.Lesiones;
 
-    public class ProductsViewModel : BaseViewModel
+    public class ProductsViewModelUser : BaseViewModel
     {
         #region Attributes
         private string filter;
@@ -24,16 +25,18 @@
 
         private bool isRefreshing;
 
-        private ObservableCollection<ProductItemViewModel> products;
+        private ObservableCollection<ProductItemViewModelUser> products;
         #endregion
 
         #region Properties
-        public Category Category {
+        public Category Category
+        {
             get;
             set;
         }
 
-        public string Filter {
+        public string Filter
+        {
             get
             {
                 return this.filter;
@@ -46,9 +49,9 @@
         }
 
         public List<Product> MyProducts { get; set; }
-    
 
-        public ObservableCollection<ProductItemViewModel> Products
+
+        public ObservableCollection<ProductItemViewModelUser> Products
         {
             get { return this.products; }
             set { this.SetValue(ref this.products, value); }
@@ -71,25 +74,25 @@
             this.dataService = new DataService();
             this.LoadProducts();
         }*/
-
-        public ProductsViewModel(Category category)
+        Deportista deportistaa;
+        public ProductsViewModelUser(Category category, Deportista deportista)
         {
             instance = this;
-            
+            this.deportistaa = deportista;
             this.apiService = new APIService();
             this.Category = category;
             this.dataService = new DataService();
             this.LoadProducts();
-            
+
         }
         #endregion
 
         //para llamar a una clase existente sin necesitad de volver a instanciarla =>SIGLETON
         #region Singleton
-        private static ProductsViewModel instance;
-        
+        private static ProductsViewModelUser instance;
 
-        public static ProductsViewModel GetInstance()
+
+        public static ProductsViewModelUser GetInstance()
         {/*
             if (instance == null)
             {
@@ -218,7 +221,7 @@
             //si no hay filtro en la lupa
             if (string.IsNullOrEmpty(this.Filter))
             {
-                var myListProductItemViewModel = this.MyProducts.Select(p => new ProductItemViewModel
+                var myListProductItemViewModel = this.MyProducts.Select(p => new ProductItemViewModelUser(this.deportistaa)
                 {
                     Description = p.Description,
                     ImageArray = p.ImageArray,
@@ -233,13 +236,13 @@
 
                 });
 
-                this.Products = new ObservableCollection<ProductItemViewModel>(
+                this.Products = new ObservableCollection<ProductItemViewModelUser>(
                     myListProductItemViewModel.OrderBy(p => p.Description));
             }
             //si hay texto en la lupa
             else
             {
-                var myListProductItemViewModel = this.MyProducts.Select(p => new ProductItemViewModel
+                var myListProductItemViewModel = this.MyProducts.Select(p => new ProductItemViewModelUser(this.deportistaa)
                 {
                     Description = p.Description,
                     ImageArray = p.ImageArray,
@@ -255,13 +258,13 @@
 
                 }).Where(p => p.Description.ToLower().Contains(this.Filter.ToLower())).ToList();
 
-                this.Products = new ObservableCollection<ProductItemViewModel>(
+                this.Products = new ObservableCollection<ProductItemViewModelUser>(
                     myListProductItemViewModel.OrderBy(p => p.Description));
 
             }
             //Convierto la lista de los Products a ProductItemViewModel
 
-            
+
         }
         #endregion
 

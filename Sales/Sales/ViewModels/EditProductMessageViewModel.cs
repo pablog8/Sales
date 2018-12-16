@@ -5,6 +5,7 @@
     using Plugin.Media.Abstractions;
     using Sales.Common.Models;
     using Sales.Helpers;
+    using Sales.Lesiones;
     using Sales.Services;
     using System;
     using System.Collections.Generic;
@@ -14,7 +15,7 @@
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class EditProductViewModel : BaseViewModel
+    public class EditProductMessageViewModel : BaseViewModel
     {
         #region Atributes
 
@@ -60,6 +61,7 @@
         public List<Category> MyCategories { get; set; }
 
         //lo que depende del atributo category
+        
         public Category Category
         {
             get { return this.category; }
@@ -75,8 +77,10 @@
 
         #endregion
         #region Constructors
-        public EditProductViewModel(Product product)
+        Deportista deportistaa;
+        public EditProductMessageViewModel(Product product, Deportista deportista)
         {
+            this.deportistaa = deportista;
             this.product = product;
             this.apiService = new APIService();
             this.IsEnabled = true;
@@ -86,6 +90,7 @@
         #endregion
 
         #region Commands
+        /*
         public ICommand DeleteCommand
         {
             get
@@ -219,17 +224,18 @@
                 });
             }
         }
-
-        public ICommand SaveCommand
+        */
+        public ICommand AddCommand
         {
             get
             {
-                return new RelayCommand(Save);
+                return new RelayCommand(Add);
             }
         }
 
-        private async void Save()
+        private async void Add()
         {
+            /*
             if (string.IsNullOrEmpty(this.Product.Description))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -238,7 +244,7 @@
                     Languages.Accept);
                 return;
             }
-           
+            */
             /*
             if (this.Product.Price < 0)
             {
@@ -248,7 +254,7 @@
                     Languages.Accept);
                 return;
             }*/
-
+            /*
             if (this.Category == null)
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -257,7 +263,7 @@
                     Languages.Accept);
                 return;
             }
-
+            */
             this.IsRunning = true;
             this.IsEnabled = false;
 
@@ -274,16 +280,38 @@
             }
 
             //para saber si se cogió o no foto
+            /*
             byte[] imageArray = null;
             if (this.file != null)
             {
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
                 this.Product.ImageArray = imageArray;
             }
-
+            */
             //por si el usuario cambia la categoría
-            this.Product.CategoryId = this.Category.CategoryId;
+            //this.Product.CategoryId = this.Category.CategoryId;
+            string descripcionproducto = this.product.Description;
+            string notasproducto = this.product.Remarks;
+            string categoriaa = this.category.Description;
+            //creamos el deportista
+            var ejercicio = new TablaEjercicios
+            {
+                Nombreejercicio = descripcionproducto,
+                Descripcion = notasproducto,
+                clavedeportista = deportistaa.IDDeportista,
 
+                // Salario = decimal.Parse(salarioEntry.Text),
+
+            };
+
+            //insertamos el deportista en la base de datos
+            using (var datos = new DataAccess())
+            {
+                datos.InsertEjercicio(ejercicio);
+                //listaListView.ItemsSource = datos.GetDeportistas();
+            }
+
+            /*
             var url = Application.Current.Resources["UrlAPI"].ToString();
 
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
@@ -292,8 +320,9 @@
 
             //invocamos el metodo post del apiservice
             var response = await this.apiService.Put(url, prefix, controller, this.Product, this.Product.ProductId, Settings.TokenType, Settings.AccessToken);
-
+            */
             //preguntamos si lo grabó de manera exitosa
+            /*
             if (!response.IsSuccess)
             {
                 this.IsRunning = false;
@@ -303,14 +332,15 @@
             }
 
             var newProduct = (Product)response.Result;
-
+            */
             //adicionamos el producto a la colección
-            var productsViewModel = ProductsViewModel.GetInstance();
+            //var productsViewModel = ProductsViewModel.GetInstance();
 
             //buscamos el producto lo eliminamos y lo volvemos a crear
+            /*
             var oldProduct = productsViewModel.MyProducts.Where(p => p.ProductId == this.Product.ProductId).FirstOrDefault();
 
-            if(oldProduct != null)
+            if (oldProduct != null)
             {
                 productsViewModel.MyProducts.Remove(oldProduct);
             }
@@ -318,6 +348,7 @@
 
             productsViewModel.MyProducts.Add(newProduct);
             productsViewModel.RefreshList();
+            */
             // la ordenamos
             //viewModel.Products = viewModel.Products.OrderBy(p => p.Description).ToList();
 

@@ -25,11 +25,12 @@
                     <Label Text="Fecha Nacimiento "
                             VerticalOptions="Center" />
                     <DatePicker x:Name="fechaContratoDatePicker" />
-                    <Label Text="Activo: "
+                    <!--<Label Text="Activo: "
                            VerticalOptions="Center" />
                     <Switch x:Name="activoSwitch"
                             VerticalOptions="Center"
-                            IsToggled="True" />
+                            IsToggled="True" />-->
+                    
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">

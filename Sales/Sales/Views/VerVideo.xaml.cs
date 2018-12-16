@@ -13,12 +13,17 @@ namespace Sales.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class VerVideo : ContentPage
 	{
+        
 		public VerVideo (Video video)
 		{
+
 			InitializeComponent ();
             //this.Video = video;
             //string video = "https://www.youtube.com/embed/xFnHTQn5iqo";
+            
             string nombre = video.NombreVideo;
+           // TitleProperty.PropertyName.Insert(1, "ksks");
+            
             string linkk = video.LinkVideo;
             string descripcion = video.Description;
             HtmlWebViewSource personHtmlSource = new HtmlWebViewSource();
