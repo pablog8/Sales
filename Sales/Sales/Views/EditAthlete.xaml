@@ -46,15 +46,20 @@
                             TextColor="White"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center" />
+                   
 
                 </StackLayout>
-                <Button x:Name="lesionesButton"
-                        Text="Gestión de Lesiones"
-            BackgroundColor="Navy"
-            TextColor="White" />
+                
                 <!--<ListView x:Name="listaaListView" /> -->
-
+                <Button x:Name="lesionesButton"
+                        Image="lesiones"
+                        Text="Gestión de Lesiones"
+                        BackgroundColor="Navy"
+                        TextColor="White" 
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="EndAndExpand" />
             </StackLayout>
+            
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

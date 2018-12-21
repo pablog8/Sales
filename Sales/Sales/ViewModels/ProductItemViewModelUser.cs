@@ -40,12 +40,12 @@
 
         private async void EditProduct()
         {
-
+            
             if (MainViewModel.GetInstance().UserASP.Email == "prueba3@usal.es")
             {
                 //Creamos una instancia y ligarlo a la viewmodel
                 MainViewModel.GetInstance().EditProductt = new EditProductMessageViewModel(this, deportistaa);
-                await App.Navigator.PushAsync(new EditProductSend());
+                await App.Navigator.PushAsync(new EditProductExercise());
             }
             else
             {
@@ -55,6 +55,8 @@
                 //tiene que apilar otra pagina
                 await App.Navigator.PushAsync(new EditProductUser());
             }
+               
+            
 
 
         }

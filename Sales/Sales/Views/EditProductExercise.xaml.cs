@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Sales.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class EditProductSend : ContentPage
+	public partial class EditProductExercise : ContentPage
 	{
-		public EditProductSend ()
+		public EditProductExercise ()
 		{
 			InitializeComponent ();
 		}

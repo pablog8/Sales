@@ -26,8 +26,9 @@
                 <StackLayout Orientation="Horizontal">
 
                     <Button x:Name="enviartabla"
+                            Image="tabla" 
                             Text="Tabla personalizada"
-                            BackgroundColor="Teal"
+                            BackgroundColor="Navy"
                             TextColor="White"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center" />

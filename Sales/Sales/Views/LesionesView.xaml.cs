@@ -41,7 +41,8 @@ namespace Sales.Views
 
         private async void Enviartabla_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TablaEjerciciosView(deportistaa));
+            await Navigation.PushAsync(new TableExercisesView(deportistaa));
+            //await Navigation.PushAsync(new TablaEjerciciosView(deportistaa));
             //await Navigation.PushAsync(new TablaEjerciciosView(deportistaa));
         }
 

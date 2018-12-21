@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Sales.Views.EditProductSend">
+              xmlns:i18n="clr-namespace:Sales.Helpers"
+             x:Class="Sales.Views.EditProductExercise"
+              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Añadir ejercicio">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding EditProductt}">
@@ -17,13 +20,7 @@
 
 
                 </Image>
-                <Image
-                    	Aspect="AspectFit"
-                    	HeightRequest="70"
-                    	Source="pencil"
-                    	WidthRequest="70">
-
-                </Image>
+                
 
                 <Label
                         TextColor="Black"
@@ -73,40 +70,28 @@
                         Title="{i18n:Translate CategoryPlaceholder}">
                 </Picker>
 
-                <Label
-                        TextColor="Black"
-                        Text="Comentario personal"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center">
-                </Label>
-                <Entry
-                        
-                        x:Name="entrycomentario"
-                Placeholder="Comentario">
-
-                </Entry>
-
                 <ActivityIndicator
                 IsRunning="{Binding IsRunning}"
                 VerticalOptions="CenterAndExpand">
 
                 </ActivityIndicator>
-            </StackLayout>
-            <StackLayout
+                <StackLayout
                     Orientation="Horizontal">
-                <Button
+                    <Button
                 
-                Text="Añadir a la lista"
+                Text="Añadir ejercicio a la lista"
                 HorizontalOptions="FillAndExpand"
-                BorderRadius="23"
-                Command="{Binding Add}"
+                Command="{Binding AddCommand}"
                 HeightRequest="46"
                 IsEnabled="{Binding IsEnabled}"
                 IsVisible="{Binding IsVisible}"
                 BackgroundColor="Navy"
                 TextColor="White">
-                </Button>
+                    </Button>
+                </StackLayout>
             </StackLayout>
+           
+
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

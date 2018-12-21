@@ -75,7 +75,7 @@
             this.LoadProducts();
         }*/
         Deportista deportistaa;
-        public ProductsViewModelUser(Category category, Deportista deportista)
+        public ProductsViewModelUser(Category category , Deportista deportista)
         {
             instance = this;
             this.deportistaa = deportista;
@@ -221,7 +221,7 @@
             //si no hay filtro en la lupa
             if (string.IsNullOrEmpty(this.Filter))
             {
-                var myListProductItemViewModel = this.MyProducts.Select(p => new ProductItemViewModelUser(this.deportistaa)
+                var myListProductItemViewModel = this.MyProducts.Select(p => new ProductItemViewModelUser (this.deportistaa)
                 {
                     Description = p.Description,
                     ImageArray = p.ImageArray,

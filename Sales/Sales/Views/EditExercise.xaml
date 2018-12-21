@@ -5,12 +5,15 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10" Spacing="10">
-                <Label Text="Nombre del Ejercicio " FontAttributes="Bold"></Label>
-                <Entry x:Name="nombreejercicioEntry"
-                        Placeholder="Nombre" />
-                <Label Text="DESCRIPCIÓN " FontAttributes="Bold"></Label>
-                <Entry x:Name="descripcionEntry"
-                        Placeholder="descripcion" />
+                <Label Text="Nombre del Ejercicio" FontAttributes="Bold" FontSize="Medium"  HorizontalOptions="Center"></Label>
+                <Label x:Name="nombreejercicioEntry" TextColor="Black" FontSize="Small" HorizontalOptions="Center"
+                        />
+                <Label Text="Descripción" FontAttributes="Bold" FontSize="Medium"  HorizontalOptions="Center"></Label>
+                <Label x:Name="descripcionEntry" TextColor="Black" FontSize="Small" HorizontalOptions="Center"
+                        />
+                <Label Text="Comentario personal" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                <Editor x:Name="comentarioEntry"
+                        />
 
                 <StackLayout Orientation="Horizontal">
                     <Button x:Name="actualizarButton"

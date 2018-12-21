@@ -28,6 +28,7 @@ namespace Sales.Views
 
             nombreejercicioEntry.Text = ejercicio.Nombreejercicio;
             descripcionEntry.Text = ejercicio.Descripcion;
+            comentarioEntry.Text = ejercicio.ComentarioEjercicio;
 
 
             actualizarButton.Clicked += ActualizarButton_Clicked;
@@ -70,19 +71,22 @@ namespace Sales.Views
 
         private async void ActualizarButton_Clicked(object sender, EventArgs e)
         {
+            /*
             if (string.IsNullOrEmpty(nombreejercicioEntry.Text))
             {
                 await DisplayAlert("Error", "Debe ingresar el nombre del ejercicio", "Aceptar");
                 nombreejercicioEntry.Focus();
                 return;
             }
+            */
+            /*
             if (string.IsNullOrEmpty(descripcionEntry.Text))
             {
                 await DisplayAlert("Error", "Debe ingresar descripcion", "Aceptar");
                 descripcionEntry.Focus();
                 return;
             }
-
+            */
 
             /*
             if (string.IsNullOrEmpty(salarioEntry.Text))
@@ -93,7 +97,7 @@ namespace Sales.Views
             }*/
             ejercicio.Nombreejercicio = nombreejercicioEntry.Text;
             ejercicio.Descripcion = descripcionEntry.Text;
-
+            ejercicio.ComentarioEjercicio = comentarioEntry.Text;
 
             using (var datos = new DataAccess())
             {

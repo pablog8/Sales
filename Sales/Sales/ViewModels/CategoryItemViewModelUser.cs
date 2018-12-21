@@ -36,8 +36,9 @@ namespace Sales.ViewModels
             
             if (MainViewModel.GetInstance().UserASP.Email == "prueba3@usal.es")
             {
-                MainViewModel.GetInstance().Productss = new ProductsViewModelUser(this, this.deportistaa);// (this);
-                await App.Navigator.PushAsync(new ProductsPage());
+                  MainViewModel.GetInstance().Productss = new ProductsViewModelUser(this, this.deportistaa);// (this);
+               // MainViewModel.GetInstance().Products = new ProductsViewModel(this);// (this);
+                await App.Navigator.PushAsync(new ProductsUserExercise());
             }
             else
             {

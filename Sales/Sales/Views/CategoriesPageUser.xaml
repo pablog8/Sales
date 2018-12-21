@@ -5,10 +5,10 @@
              x:Class="Sales.Views.CategoriesPageUser"
              BackgroundColor="Silver"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate Categories}">
+             Title="Seleccione la Categoría">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding Categories}"
+            BindingContext="{Binding Categoriess}"
             Padding="5">
             <SearchBar
                 BackgroundColor="Transparent"

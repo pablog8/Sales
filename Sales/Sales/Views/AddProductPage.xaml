@@ -155,8 +155,21 @@
                         Text="{Binding Description}"
                 >
                     </Editor>
-
-                    <Label
+                <Label
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Text="Notas: "
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                </Label>
+                <Editor
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Text="{Binding Remarks}"
+                        VerticalOptions="FillAndExpand">
+                </Editor>
+                <Label
                        TextColor="Black"
                         FontAttributes="Bold"
                         FontSize="Medium"
@@ -172,20 +185,7 @@
                         Title="{i18n:Translate CategoryPlaceholder}">
 
                     </Picker>
-                    <Label
-                        TextColor="Black"
-                        FontAttributes="Bold"
-                        FontSize="Medium"
-                        Text="{i18n:Translate Remarks}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center">
-                    </Label>
-                    <Editor
-                        Grid.Column="1"
-                        Grid.Row="3"
-                        Text="{Binding Remarks}"
-                        VerticalOptions="FillAndExpand">
-                    </Editor>
+                    
 
 
 

@@ -7,6 +7,7 @@
     using Sales.Helpers;
     using Sales.Lesiones;
     using Sales.Services;
+    using Sales.Views;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -357,7 +358,10 @@
             this.IsRunning = false;
             this.IsEnabled = true;
             //Desapilamos
-            await App.Navigator.PopAsync();
+            await App.Navigator.PopAsync(false);
+            await App.Navigator.PopAsync(false);
+            await App.Navigator.PopAsync(false);
+            //PopUntilDestination(typeof(TableExercisesView));
 
         }
         #endregion

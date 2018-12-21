@@ -12,6 +12,7 @@ namespace Sales.Lesiones
         public int IDEjercicio { get; set; }
         public int clavedeportista { get; set; }
         public string Nombreejercicio { get; set; }
+        public string ComentarioEjercicio { get; set; }
         public string Descripcion { get; set; }
         public int Series { get; set; }
     }
