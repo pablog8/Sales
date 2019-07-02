@@ -25,9 +25,6 @@ namespace Sales.Lesiones
             //creamos la tabla de los deportistas
             connection.CreateTable<Deportista>();
 
-            //creamos la tabla de los entrenadores
-            //connection.CreateTable<Entrenador>();
-
             //creamos la tabla de las lesiones
             connection.CreateTable<Lesion>();
 
@@ -113,17 +110,19 @@ namespace Sales.Lesiones
         {
             connection.Delete(lesion);
         }
-        //obtener deportista
+        //obtener lesión
         public Lesion GetLesion(int IDLesion)
         {
             return connection.Table<Lesion>().FirstOrDefault(c => c.IDLesion == IDLesion);
 
         }
+        //obtener lesión del deportista
         public List<Lesion> GetLesionDeportista(int clavedep)
         {
             return connection.Table<Lesion>().Where(c => c.clavedeportista == clavedep).ToList();
 
         }
+        //obtener lesiones
         public List<Lesion> GetLesiones()
         {
             return connection.Table<Lesion>().OrderBy(c => c.Lugar).ToList();

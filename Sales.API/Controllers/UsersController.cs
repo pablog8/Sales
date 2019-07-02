@@ -2,14 +2,20 @@
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Web.Http;
     using Common.Models;
     using Helpers;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Newtonsoft.Json.Linq;
+    using Sales.API.Models;
 
     [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
+     
+
         //mandamos todos los campos, que estan en userRequest
         public IHttpActionResult PostUser(UserRequest userRequest)
         {
@@ -66,6 +72,7 @@
             }
 
         }
+        
         [HttpPost]
         [Route("LoginFacebook")]
         public IHttpActionResult LoginFacebook(FacebookResponse profile)
